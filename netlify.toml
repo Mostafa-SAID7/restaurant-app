@@ -1,7 +1,7 @@
 [build]
   base = "frontend"
   command = "npm run build"
-  publish = "frontend/dist/restaurant-app/browser"
+  publish = "dist/restaurant-app/browser"
 
 [build.environment]
   NODE_VERSION = "22.14.0"
