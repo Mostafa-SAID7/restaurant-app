@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, delay } from 'rxjs/operators';
@@ -7,8 +7,7 @@ import { Reservation, ReservationResponse } from '../models/reservation.model';
 @Injectable({ providedIn: 'root' })
 export class ReservationService {
   private apiUrl = 'https://fakerestaurantapi.runasp.net/reservations';
-
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   makeReservation(reservation: Reservation): Observable<ReservationResponse> {
     return this.http.post<ReservationResponse>(this.apiUrl, reservation).pipe(
