@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { IconComponent } from '../../shared/components/icon.component';
 import { PageHeaderComponent } from '../../shared/components/page-header/page-header.component';
@@ -241,7 +241,7 @@ export class AboutComponent {
     email:   ['', [Validators.required, Validators.email]],
     subject: ['', Validators.required],
     message: ['', Validators.required],
-  });
+  }) as any;
 
   restaurantInfo = RESTAURANT_INFO;
   team = TEAM_MEMBERS;
@@ -256,12 +256,12 @@ export class AboutComponent {
   hours = RESTAURANT_INFO.hours;
 
   sendMessage(): void {
-    if (this.contactForm.invalid) { this.contactForm.markAllAsTouched(); return; }
+    if (this.contactForm?.invalid) { this.contactForm?.markAllAsTouched(); return; }
     this.sending.set(true);
     setTimeout(() => {
       this.messageSent.set(true);
       this.sending.set(false);
-      this.contactForm.reset();
+      this.contactForm?.reset();
       setTimeout(() => this.messageSent.set(false), 5000);
     }, 1500);
   }

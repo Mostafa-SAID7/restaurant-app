@@ -7,6 +7,7 @@ import { MenuItem, MenuCategory } from '../../core/models/menu-item.model';
 import { IconComponent } from '../../shared/components/icon.component';
 import { PageHeaderComponent } from '../../shared/components/page-header/page-header.component';
 import { MenuItemCardComponent } from '../../shared/components/menu-item-card/menu-item-card.component';
+import { MenuItemModalComponent } from '../../shared/components/menu-item-modal/menu-item-modal.component';
 import { EmptyStateComponent } from '../../shared/components/empty-state/empty-state.component';
 import { CategoryIconMapperService } from '../../shared/services/category-icon-mapper.service';
 
@@ -21,6 +22,7 @@ type FilterCategory = 'All' | MenuCategory;
     IconComponent,
     PageHeaderComponent,
     MenuItemCardComponent,
+    MenuItemModalComponent,
     EmptyStateComponent
   ],
   template: `
@@ -117,7 +119,8 @@ type FilterCategory = 'All' | MenuCategory;
                     <app-menu-item-card
                       [item]="item"
                       [categoryIcon]="categoryIconMapper.getIcon(item.category)"
-                      (addToCart)="addToCart($event)">
+                      (addToCart)="addToCart($event)"
+                      (viewDetails)="viewItemDetails($event)">
                     </app-menu-item-card>
                   }
                 </div>
@@ -143,7 +146,8 @@ type FilterCategory = 'All' | MenuCategory;
                 <app-menu-item-card
                   [item]="item"
                   [categoryIcon]="categoryIconMapper.getIcon(item.category)"
-                  (addToCart)="addToCart($event)">
+                  (addToCart)="addToCart($event)"
+                  (viewDetails)="viewItemDetails($event)">
                 </app-menu-item-card>
               }
             </div>
@@ -174,6 +178,14 @@ type FilterCategory = 'All' | MenuCategory;
         </div>
       }
     </div>
+
+    <!-- Menu Item Modal -->
+    <app-menu-item-modal
+      [item]="selectedItem()"
+      [isOpen]="modalOpen()"
+      (close)="closeModal()"
+      (addToCart)="onModalAddToCart($event)">
+    </app-menu-item-modal>
   `
 })
 export class MenuComponent implements OnInit {
@@ -189,6 +201,8 @@ export class MenuComponent implements OnInit {
   selectedCategory = signal<FilterCategory>('All');
   loading         = signal(true);
   searchQuery     = signal('');
+  selectedItem    = signal<MenuItem | undefined>(undefined);
+  modalOpen       = signal(false);
   
   noMatchesMessage = computed(() => {
     const q = this.searchQuery();
@@ -245,6 +259,20 @@ export class MenuComponent implements OnInit {
   }
 
   addToCart(item: MenuItem): void {
+    this.cartService.addItem(item);
+  }
+
+  viewItemDetails(item: MenuItem): void {
+    this.selectedItem.set(item);
+    this.modalOpen.set(true);
+  }
+
+  closeModal(): void {
+    this.modalOpen.set(false);
+    setTimeout(() => this.selectedItem.set(undefined), 300);
+  }
+
+  onModalAddToCart(item: MenuItem): void {
     this.cartService.addItem(item);
   }
 }

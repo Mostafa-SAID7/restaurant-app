@@ -20,10 +20,17 @@ export class MenuItemCardComponent {
   @Input() categoryIcon: string = 'food';
   @Input() isLoading: boolean = false;
   @Output() addToCart = new EventEmitter<MenuItem>();
+  @Output() viewDetails = new EventEmitter<MenuItem>();
 
   onAddClick(): void {
     if (this.item) {
       this.addToCart.emit(this.item);
+    }
+  }
+
+  onViewDetails(): void {
+    if (this.item) {
+      this.viewDetails.emit(this.item);
     }
   }
 }

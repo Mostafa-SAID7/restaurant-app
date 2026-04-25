@@ -477,7 +477,7 @@ export class CheckoutComponent {
   }
 
   goTo(step: OrderStep): void {
-    if (step === 'payment' && this.detailsForm.invalid) {
+    if (step === 'payment' && this.detailsForm?.invalid) {
       this.detailsForm.markAllAsTouched();
       return;
     }
@@ -490,16 +490,16 @@ export class CheckoutComponent {
   }
 
   placeOrder(): void {
-    if (this.paymentForm.invalid) {
-      this.paymentForm.markAllAsTouched();
+    if (this.paymentForm?.invalid) {
+      this.paymentForm?.markAllAsTouched();
       return;
     }
     this.submitting.set(true);
     const checkout: OrderCheckout = {
-      ...this.detailsForm.value,
-      cardNumber: this.paymentForm.value.cardNumber ?? undefined,
-      cardExpiry: this.paymentForm.value.cardExpiry ?? undefined,
-      cardCvc:    this.paymentForm.value.cardCvc ?? undefined,
+      ...this.detailsForm?.value,
+      cardNumber: this.paymentForm?.value?.cardNumber ?? undefined,
+      cardExpiry: this.paymentForm?.value?.cardExpiry ?? undefined,
+      cardCvc:    this.paymentForm?.value?.cardCvc ?? undefined,
     } as OrderCheckout;
 
     this.cartService.placeOrder(checkout).subscribe(res => {

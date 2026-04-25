@@ -2,24 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-
-export interface SeoMetadata {
-  title: string;
-  description: string;
-  keywords?: string;
-  canonical?: string;
-  ogTitle?: string;
-  ogDescription?: string;
-  ogImage?: string;
-  ogUrl?: string;
-  ogType?: string;
-  twitterCard?: string;
-  twitterTitle?: string;
-  twitterDescription?: string;
-  twitterImage?: string;
-  robots?: string;
-  author?: string;
-}
+import { SeoMetadata } from '../models/seo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,44 +23,48 @@ export class SeoService {
    * Set complete SEO metadata for a page
    */
   setSeoMetadata(metadata: SeoMetadata): void {
+    if (!metadata) return;
+    
+    const meta = metadata as SeoMetadata;
+    
     // Set title
-    this.titleService.setTitle(metadata.title);
+    this.titleService.setTitle(meta.title);
 
     // Set meta description
-    this.updateMetaTag('name', 'description', metadata.description);
+    this.updateMetaTag('name', 'description', meta.description);
 
     // Set keywords if provided
-    if (metadata.keywords) {
-      this.updateMetaTag('name', 'keywords', metadata.keywords);
+    if (meta.keywords) {
+      this.updateMetaTag('name', 'keywords', meta.keywords);
     }
 
     // Set robots meta tag
-    this.updateMetaTag('name', 'robots', metadata.robots || 'index, follow');
+    this.updateMetaTag('name', 'robots', meta.robots || 'index, follow');
 
     // Set author if provided
-    if (metadata.author) {
-      this.updateMetaTag('name', 'author', metadata.author);
+    if (meta.author) {
+      this.updateMetaTag('name', 'author', meta.author);
     }
 
     // Set canonical URL
-    const canonicalUrl = metadata.canonical || this.getCurrentUrl();
+    const canonicalUrl = meta.canonical || this.getCurrentUrl();
     this.setCanonicalUrl(canonicalUrl);
 
     // Set Open Graph tags
     this.setOpenGraphTags({
-      title: metadata.ogTitle || metadata.title,
-      description: metadata.ogDescription || metadata.description,
-      image: metadata.ogImage || this.defaultImage,
-      url: metadata.ogUrl || this.getCurrentUrl(),
-      type: metadata.ogType || 'website'
+      title: meta.ogTitle || meta.title,
+      description: meta.ogDescription || meta.description,
+      image: meta.ogImage || this.defaultImage,
+      url: meta.ogUrl || this.getCurrentUrl(),
+      type: meta.ogType || 'website'
     });
 
     // Set Twitter Card tags
     this.setTwitterCardTags({
-      card: metadata.twitterCard || 'summary_large_image',
-      title: metadata.twitterTitle || metadata.title,
-      description: metadata.twitterDescription || metadata.description,
-      image: metadata.twitterImage || this.defaultImage
+      card: meta.twitterCard || 'summary_large_image',
+      title: meta.twitterTitle || meta.title,
+      description: meta.twitterDescription || meta.description,
+      image: meta.twitterImage || this.defaultImage
     });
   }
 
@@ -130,11 +117,11 @@ export class SeoService {
    * Update or create a meta tag
    */
   private updateMetaTag(attrSelector: string, attrName: string, content: string): void {
-    const tag = this.metaService.getTag(`${attrSelector}="${attrName}"`);
-    if (tag) {
-      this.metaService.updateTag({ [attrSelector]: attrName, content });
-    } else {
-      this.metaService.addTag({ [attrSelector]: attrName, content });
+    const tagSelector = `${attrSelector}="${attrName}"`;
+    try {
+      this.metaService.updateTag({ [attrSelector]: attrName, content } as any);
+    } catch (error: unknown) {
+      this.metaService.addTag({ [attrSelector]: attrName, content } as any);
     }
   }
 

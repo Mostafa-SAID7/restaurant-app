@@ -1,4 +1,4 @@
-import { SeoMetadata } from '../services/seo.service';
+import { SeoMetadata } from '../models/seo.model';
 
 export const SEO_CONFIG = {
   baseUrl: 'https://noor73.netlify.app',
