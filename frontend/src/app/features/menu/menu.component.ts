@@ -8,7 +8,6 @@ import { IconComponent } from '../../shared/components/icon.component';
 import { PageHeaderComponent } from '../../shared/components/page-header/page-header.component';
 import { MenuItemCardComponent } from '../../shared/components/menu-item-card/menu-item-card.component';
 import { EmptyStateComponent } from '../../shared/components/empty-state/empty-state.component';
-import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 import { CategoryIconMapperService } from '../../shared/services/category-icon-mapper.service';
 
 type FilterCategory = 'All' | MenuCategory;
@@ -22,8 +21,7 @@ type FilterCategory = 'All' | MenuCategory;
     IconComponent,
     PageHeaderComponent,
     MenuItemCardComponent,
-    EmptyStateComponent,
-    LoadingSpinnerComponent
+    EmptyStateComponent
   ],
   template: `
     <!-- Page Header -->

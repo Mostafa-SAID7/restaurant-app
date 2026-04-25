@@ -5,6 +5,7 @@
 
 [build.environment]
   NODE_VERSION = "22.14.0"
+  NPM_FLAGS = "--legacy-peer-deps"
 
 [[plugins]]
   package = "@netlify/angular-runtime"

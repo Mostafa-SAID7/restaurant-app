@@ -12,7 +12,7 @@ import { fadeUp, staggerFadeUp, scaleIn } from '../../shared/animations/fade.ani
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink, IconComponent, PageHeaderComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, IconComponent, PageHeaderComponent],
   animations: [fadeUp, staggerFadeUp, scaleIn],
   template: `
     <app-page-header 
