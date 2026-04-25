@@ -12,6 +12,14 @@
 
 .menu-item-image {
   @apply relative w-full aspect-square overflow-hidden bg-bg-surface-2;
+
+  .item-image {
+    @apply w-full h-full object-cover transition-transform duration-300;
+
+    &:hover {
+      @apply scale-110;
+    }
+  }
 }
 
 .image-placeholder {

@@ -1,8 +1,12 @@
 <article class="menu-item-card">
   <div class="menu-item-image">
-    <div class="image-placeholder">
-      <app-icon [name]="categoryIcon" strokeWidth="1"></app-icon>
-    </div>
+    @if (item.image) {
+      <img [src]="item.image" [alt]="item.name" class="item-image" />
+    } @else {
+      <div class="image-placeholder">
+        <app-icon [name]="categoryIcon" strokeWidth="1"></app-icon>
+      </div>
+    }
     <div class="card-overlay">
       <span class="badge badge-accent">{{ item.category }}</span>
       @if (item.tags?.includes('chef-special')) {
