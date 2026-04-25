@@ -16,11 +16,14 @@ import { IconComponent } from '../icon.component';
   templateUrl: './menu-item-card.component.html'
 })
 export class MenuItemCardComponent {
-  @Input() item!: MenuItem;
+  @Input() item?: MenuItem;
   @Input() categoryIcon: string = 'food';
+  @Input() isLoading: boolean = false;
   @Output() addToCart = new EventEmitter<MenuItem>();
 
   onAddClick(): void {
-    this.addToCart.emit(this.item);
+    if (this.item) {
+      this.addToCart.emit(this.item);
+    }
   }
 }

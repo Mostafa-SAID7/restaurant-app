@@ -90,10 +90,12 @@ type FilterCategory = 'All' | MenuCategory;
         </div>
       </div>
 
-      <!-- Loading State -->
+      <!-- Loading State with Skeletons -->
       @if (loading()) {
-        <div class="py-20">
-          <app-loading-spinner></app-loading-spinner>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          @for (i of [1,2,3,4,5,6]; track i) {
+            <app-menu-item-card [isLoading]="true"></app-menu-item-card>
+          }
         </div>
       } @else {
 
