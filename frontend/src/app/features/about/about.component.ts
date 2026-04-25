@@ -14,9 +14,9 @@ import { IconComponent } from '../../shared/components/icon.component';
       <div class="page-header-bg"></div>
       <div class="container p-header-section text-center">
         <span class="section-label">Our Story</span>
-        <h1 class="section-title title-lg">About NooR</h1>
+        <h1 class="section-title title-lg">About NooR - Michelin-Recommended Fine Dining in Manhattan</h1>
         <div class="divider"></div>
-        <p class="section-subtitle mt-4 mx-auto mb-0">A passion project turned into New York City's most talked-about culinary destination.</p>
+        <p class="section-subtitle mt-4 mx-auto mb-0">Award-winning fine dining restaurant in NYC. Farm-to-table cuisine, 500+ wine labels, and culinary storytelling since 2019.</p>
       </div>
     </div>
 
@@ -39,12 +39,15 @@ import { IconComponent } from '../../shared/components/icon.component';
 
           <div class="story-content animate-fade-left">
             <span class="section-label text-left block">Our Beginning</span>
-            <h2 class="text-3xl mb-5">A Vision Born in Midnight Kitchens</h2>
+            <h2 class="text-3xl mb-5">From Michelin Kitchens to Manhattan Fine Dining</h2>
             <p class="text-muted mb-4 leading-relaxed">
-              NooR was born from a single obsession: creating food that tells a story. Founders Chef Marcus Voss and sommelier Lucia Chen envisioned a restaurant where the drama of fine dining met the warmth of genuine hospitality.
+              NooR was born from a single obsession: creating food that tells a story. Founded in 2019 by Executive Chef Marcus Voss and Head Sommelier Julian Reed, NooR has become a Michelin-recommended fine dining destination in Manhattan, recognized for its innovative approach to farm-to-table cuisine and theatrical culinary presentation.
+            </p>
+            <p class="text-muted mb-4 leading-relaxed">
+              Chef Marcus Voss brings 20 years of Michelin-starred culinary excellence from prestigious European fine dining establishments. His philosophy combines farm-to-table commitment with artistic presentation, creating an immersive dining experience that celebrates both innovation and tradition.
             </p>
             <p class="text-muted mb-6">
-              Inspired by the chiaroscuro of classic jazz and the bold palette of late-night New York, they designed every detail of NooR to be an immersive experience — from the hand-crafted cocktail programme to the obsidian-tiled dining room.
+              Inspired by the chiaroscuro of classic jazz and the bold palette of late-night New York, we designed every detail of NooR to be an immersive experience — from the hand-crafted cocktail programme to the obsidian-tiled dining room. Our 12 expert chefs craft 48+ signature dishes, while our sommelier curates 500+ wine labels from 30+ countries.
             </p>
             <div class="story-stats">
               <div class="story-stat">
@@ -70,7 +73,7 @@ import { IconComponent } from '../../shared/components/icon.component';
       <div class="container">
         <div class="section-header">
           <span class="section-label">The Talent Behind the Magic</span>
-          <h2 class="section-title">Meet Our Team</h2>
+          <h2 class="section-title">Meet Our Award-Winning Culinary Team</h2>
           <div class="divider"></div>
         </div>
         <div class="team-grid">
@@ -78,19 +81,19 @@ import { IconComponent } from '../../shared/components/icon.component';
             <div class="team-avatar"><app-icon name="chef" strokeWidth="2"></app-icon></div>
             <h3 class="team-name">Marcus Voss</h3>
             <div class="text-accent text-xs font-bold uppercase tracking-wider mb-2">Executive Chef</div>
-            <p class="team-bio text-muted font-light">Visionary chef with 20 years of experience in Michelin-starred kitchens across Europe.</p>
+            <p class="team-bio text-muted font-light">Executive Chef Marcus Voss brings 20 years of Michelin-starred culinary excellence from prestigious European fine dining establishments. His innovative approach to farm-to-table cuisine and theatrical presentation has earned NooR Michelin recognition since 2022. Chef Voss leads our team of 12 expert chefs in crafting 48+ signature dishes that tell a story with every plate.</p>
           </div>
           <div class="team-card card animate-fade-up" style="animation-delay: 0.2s">
-            <div class="team-avatar"><app-icon name="users" strokeWidth="2"></app-icon></div>
-            <h3 class="team-name">Evelyn Noir</h3>
-            <div class="text-accent text-xs font-bold uppercase tracking-wider mb-2">Creative Director</div>
-            <p class="team-bio text-muted font-light">Architect of the NooR aesthetic, ensuring every guest experience is visually stunning.</p>
-          </div>
-          <div class="team-card card animate-fade-up" style="animation-delay: 0.3s">
             <div class="team-avatar"><app-icon name="wine" strokeWidth="2"></app-icon></div>
             <h3 class="team-name">Julian Reed</h3>
             <div class="text-accent text-xs font-bold uppercase tracking-wider mb-2">Head Sommelier</div>
-            <p class="team-bio text-muted font-light">Curator of our award-winning cellar, finding the perfect narrative in every bottle.</p>
+            <p class="team-bio text-muted font-light">Head Sommelier Julian Reed is the curator of our award-winning wine cellar featuring 500+ labels from 30+ countries. With expertise in wine pairing and sommelier-led experiences, Julian creates the perfect narrative in every bottle, elevating our farm-to-table cuisine with expertly matched wines.</p>
+          </div>
+          <div class="team-card card animate-fade-up" style="animation-delay: 0.3s">
+            <div class="team-avatar"><app-icon name="sparkles" strokeWidth="2"></app-icon></div>
+            <h3 class="team-name">Evelyn Noir</h3>
+            <div class="text-accent text-xs font-bold uppercase tracking-wider mb-2">Creative Director</div>
+            <p class="team-bio text-muted font-light">Creative Director Evelyn Noir is the architect of the NooR aesthetic, ensuring every guest experience is visually stunning and immersive. Her theatrical presentation philosophy transforms each dining experience into a culinary storytelling event that guests never forget.</p>
           </div>
         </div>
       </div>
@@ -101,24 +104,52 @@ import { IconComponent } from '../../shared/components/icon.component';
       <div class="container">
         <div class="section-header">
           <span class="section-label">What We Stand For</span>
-          <h2 class="section-title">Our Values</h2>
+          <h2 class="section-title">Our Fine Dining Philosophy</h2>
           <div class="divider"></div>
         </div>
         <div class="values-grid">
           <div class="value-card card">
             <app-icon name="seedling" class="value-icon text-accent"></app-icon>
-            <h3>Pure Sourcing</h3>
-            <p class="text-muted text-sm font-light">We partner only with producers who share our commitment to ethical and organic practices.</p>
+            <h3>Farm-to-Table Excellence</h3>
+            <p class="text-muted text-sm font-light">We partner exclusively with certified organic farms and local producers, maintaining a zero-food-waste kitchen policy. Our seasonal menu celebrates locally sourced ingredients and sustainable practices.</p>
           </div>
           <div class="value-card card">
             <app-icon name="sparkles" class="value-icon text-accent"></app-icon>
-            <h3>Modern Noir</h3>
-            <p class="text-muted text-sm font-light">A unique design philosophy that celebrates elegance, intimacy, and the beauty of shade.</p>
+            <h3>Culinary Storytelling</h3>
+            <p class="text-muted text-sm font-light">Every dish is a narrative. Our theatrical presentation and immersive dining experience transform meals into unforgettable culinary journeys that engage all senses.</p>
           </div>
           <div class="value-card card">
             <app-icon name="handshake" class="value-icon text-accent"></app-icon>
-            <h3>Genuity</h3>
-            <p class="text-muted text-sm font-light">Authentic hospitality where every guest is treated as a partner in our culinary story.</p>
+            <h3>Genuine Hospitality</h3>
+            <p class="text-muted text-sm font-light">We believe great food is made even better by genuine warmth and attentive service. Every guest is treated as a partner in our culinary story.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Michelin Recognition Section -->
+    <section class="section bg-surface">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Recognition & Awards</span>
+          <h2 class="section-title">Michelin-Recommended Excellence</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="awards-grid">
+          <div class="award-card card">
+            <app-icon name="trophy" class="award-icon text-accent"></app-icon>
+            <h3>Michelin Recommended</h3>
+            <p class="text-muted text-sm font-light">Recognized by Michelin Guide since 2022 for our innovative approach to fine dining and commitment to culinary excellence.</p>
+          </div>
+          <div class="award-card card">
+            <app-icon name="star" class="award-icon text-accent"></app-icon>
+            <h3>Chef-Driven Cuisine</h3>
+            <p class="text-muted text-sm font-light">Led by Executive Chef Marcus Voss with 20 years of Michelin-starred experience, our kitchen represents the pinnacle of contemporary fine dining.</p>
+          </div>
+          <div class="award-card card">
+            <app-icon name="wine" class="award-icon text-accent"></app-icon>
+            <h3>Award-Winning Wine Cellar</h3>
+            <p class="text-muted text-sm font-light">Our sommelier-curated collection of 500+ wine labels from 30+ countries has earned recognition for excellence in wine pairing and curation.</p>
           </div>
         </div>
       </div>
