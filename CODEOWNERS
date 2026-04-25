@@ -1,0 +1,23 @@
+# Code Owners for Restaurant App
+# This file defines who should review pull requests for different parts of the codebase
+
+# Default owner for everything
+* @Mostafa-SAID7
+
+# Frontend
+/frontend/ @Mostafa-SAID7
+/frontend/src/app/ @Mostafa-SAID7
+/frontend/src/styles.scss @Mostafa-SAID7
+
+# Documentation
+/docs/ @Mostafa-SAID7
+*.md @Mostafa-SAID7
+
+# Configuration
+/.github/ @Mostafa-SAID7
+/docker-compose.yml @Mostafa-SAID7
+/Dockerfile @Mostafa-SAID7
+/netlify.toml @Mostafa-SAID7
+
+# Backend (when created)
+/backend/ @Mostafa-SAID7

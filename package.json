@@ -1,0 +1,53 @@
+{
+  "name": "restaurant-app",
+  "version": "0.2.0",
+  "description": "A modern, full-featured restaurant web application built with Angular 19 and Express.js",
+  "private": true,
+  "license": "MIT",
+  "author": "Mostafa SAID",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mostafa-SAID7/restaurant-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mostafa-SAID7/restaurant-app/issues"
+  },
+  "homepage": "https://github.com/Mostafa-SAID7/restaurant-app#readme",
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "start": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "build:prod": "cd frontend && npm run build -- --configuration production",
+    "test": "cd frontend && npm test",
+    "test:coverage": "cd frontend && npm test -- --code-coverage",
+    "lint": "cd frontend && npm run lint",
+    "format": "prettier --write \"**/*.{ts,js,json,html,scss,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,js,json,html,scss,md}\"",
+    "serve:ssr": "cd frontend && npm run serve:ssr:restaurant-app",
+    "docker:build": "docker build -t restaurant-app:latest .",
+    "docker:run": "docker run -p 4200:4200 restaurant-app:latest",
+    "docker:compose": "docker-compose up",
+    "docker:compose:down": "docker-compose down",
+    "install-all": "npm install && cd frontend && npm install",
+    "clean": "rm -rf node_modules frontend/node_modules frontend/dist",
+    "help": "echo 'Available commands: start, build, test, lint, format, docker:build, docker:run'"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "restaurant",
+    "angular",
+    "express",
+    "typescript",
+    "tailwind",
+    "ssr",
+    "pwa"
+  ]
+}
