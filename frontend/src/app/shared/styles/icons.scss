@@ -1,0 +1,457 @@
+/* ============================================
+   ICON SYSTEM STYLES - Consolidated
+   ============================================ */
+
+/* --- Base Icon Styles --- */
+.ui-icon {
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform var(--transition-base), color var(--transition-fast);
+  
+  /* Prevent animation jank */
+  will-change: transform;
+}
+
+/* --- Icon Hover Effects --- */
+app-icon:hover .ui-icon,
+*:hover > app-icon .ui-icon,
+.card:hover .ui-icon,
+button:hover .ui-icon,
+a:hover .ui-icon,
+.contact-detail:hover .ui-icon,
+.nav-link:hover .ui-icon {
+  transform: scale(1.2) translateY(-2px);
+  filter: drop-shadow(0 3px 6px var(--color-accent-shadow, rgba(230, 126, 34, 0.45)));
+}
+
+/* --- Icon Size Utilities --- */
+.icon-xs {
+  font-size: 0.75rem;
+  vertical-align: -0.1em;
+}
+
+.icon-sm {
+  font-size: 1rem;
+  vertical-align: -0.125em;
+}
+
+.icon-md {
+  font-size: 1.25rem;
+  vertical-align: -0.15em;
+}
+
+.icon-lg {
+  font-size: 1.5rem;
+  vertical-align: -0.2em;
+}
+
+.icon-xl {
+  font-size: 2rem;
+  vertical-align: -0.25em;
+}
+
+.icon-2xl {
+  font-size: 2.5rem;
+  vertical-align: -0.3em;
+}
+
+.icon-3xl {
+  font-size: 3rem;
+  vertical-align: -0.35em;
+}
+
+.icon-4xl {
+  font-size: 4rem;
+  vertical-align: -0.4em;
+}
+
+.icon-5xl {
+  font-size: 5rem;
+  vertical-align: -0.45em;
+}
+
+/* --- Icon Color Utilities --- */
+.icon-accent {
+  color: var(--color-accent);
+}
+
+.icon-success {
+  color: var(--color-success);
+}
+
+.icon-error {
+  color: var(--color-error);
+}
+
+.icon-warning {
+  color: var(--color-warning);
+}
+
+.icon-muted {
+  color: var(--color-text-muted);
+}
+
+.icon-light {
+  color: var(--color-text-light);
+}
+
+/* --- Icon Spacing Utilities --- */
+.icon-inline {
+  vertical-align: -0.15em;
+  margin-right: 4px;
+}
+
+.icon-inline-left {
+  margin-right: 8px;
+}
+
+.icon-inline-right {
+  margin-left: 8px;
+}
+
+.icon-block {
+  display: block;
+  margin: 0 auto;
+}
+
+/* --- Icon Animation Utilities --- */
+.icon-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.icon-spin {
+  animation: spin 1s linear infinite;
+}
+
+.icon-bounce {
+  animation: bounce 1s infinite;
+}
+
+/* --- Icon Button Styles --- */
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  
+  &:hover {
+    background: var(--color-bg-hover);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.icon-button-sm {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-button-lg {
+  width: 40px;
+  height: 40px;
+}
+
+/* --- Icon Badge Styles --- */
+.icon-badge {
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-error);
+  }
+}
+
+/* --- Icon with Text Styles --- */
+.icon-with-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  
+  app-icon {
+    flex-shrink: 0;
+  }
+}
+
+/* --- Icon List Styles --- */
+.icon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  
+  .icon-list-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+    app-icon {
+      flex-shrink: 0;
+      color: var(--color-accent);
+    }
+  }
+}
+
+/* --- Icon Grid Styles --- */
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+  gap: 16px;
+  
+  .icon-grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--color-bg-secondary);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    
+    &:hover {
+      background: var(--color-bg-hover);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* --- Specific Component Icon Styles --- */
+
+/* Logo Icons */
+.logo-icon {
+  color: var(--color-accent);
+  font-size: 1.1rem;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Calendar Icons */
+.calendar-icon {
+  color: var(--color-accent);
+  font-size: 1.2rem;
+}
+
+/* Info Icons */
+.info-icon {
+  font-size: 1.4rem;
+  color: var(--color-accent);
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* Contact Icons */
+.contact-icon {
+  font-size: 1.4rem;
+  color: var(--color-accent);
+}
+
+/* Feature Icons */
+.feature-icon {
+  font-size: 2.5rem;
+  color: var(--color-accent);
+}
+
+/* Badge Icons */
+.badge-icon {
+  font-size: 1.5rem;
+  color: var(--color-accent);
+}
+
+/* Story Icons */
+.story-icon {
+  font-size: 5rem;
+  color: var(--color-text-muted);
+  opacity: 0.5;
+}
+
+/* Value Icons */
+.value-icon {
+  font-size: 2.5rem;
+}
+
+/* Order Type Icons */
+.type-icon {
+  font-size: 1.5rem;
+  color: var(--color-accent);
+}
+
+/* Menu Section Icons */
+.menu-section-icon {
+  font-size: 1.5rem;
+  color: var(--color-accent);
+}
+
+/* Cart Item Icons */
+.cart-item-emoji {
+  font-size: 1.5rem;
+}
+
+/* Empty State Icons */
+.empty-icon {
+  font-size: 3rem;
+  color: var(--color-text-muted);
+  opacity: 0.5;
+}
+
+/* Confirmation Icons */
+.confirm-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-success-muted);
+  border: 2px solid var(--color-success);
+  font-size: 1.8rem;
+  color: var(--color-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Star Rating Icons */
+.star-icon {
+  color: var(--color-accent);
+  font-size: 1.2rem;
+}
+
+/* Search Icons */
+.search-icon {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+/* Select Dropdown Arrow */
+.select-arrow {
+  font-size: 1.2rem;
+  color: var(--color-accent);
+  transition: transform var(--transition-base);
+  pointer-events: none;
+  
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+/* Navigation Button Icons */
+.nav-btn-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  
+  &:hover {
+    background: var(--color-bg-hover);
+  }
+}
+
+/* --- Icon Animations --- */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 0 rgba(230, 126, 34, 0));
+  }
+  50% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px rgba(230, 126, 34, 0.6));
+  }
+}
+
+@keyframes floatPulse {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* --- Responsive Icon Adjustments --- */
+@media (max-width: 768px) {
+  .icon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 12px;
+  }
+  
+  .icon-button {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .story-icon {
+    font-size: 3rem;
+  }
+  
+  .feature-icon {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+    gap: 8px;
+  }
+  
+  .icon-button {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .story-icon {
+    font-size: 2rem;
+  }
+  
+  .feature-icon {
+    font-size: 1.5rem;
+  }
+}
