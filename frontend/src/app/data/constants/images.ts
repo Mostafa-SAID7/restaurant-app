@@ -5,28 +5,28 @@
 
 export const IMAGE_MAP: Record<string, string> = {
   // Appetizers
-  'Charred Octopus': '/CharredOctopus.jpg',
-  'Truffle Arancini': '/TruffleArancini.jpg',
-  'Steak Tartare': '/SteakTartare.jpg',
+  'Charred Octopus': 'CharredOctopus.jpg',
+  'Truffle Arancini': 'TruffleArancini.jpg',
+  'Steak Tartare': 'SteakTartare.jpg',
 
   // Mains
-  'Wagyu Beef Tenderloin': '/WagyuBeefTenderloin.jpg',
-  'Pan-Seared Halibut': '/Pan-SearedHalibut.jpg',
-  'Duck Confit': '/DuckConfit.jpg',
-  'Mushroom Risotto': '/MushroomRisotto.jpg',
+  'Wagyu Beef Tenderloin': 'WagyuBeefTenderloin.jpg',
+  'Pan-Seared Halibut': 'Pan-SearedHalibut.jpg',
+  'Duck Confit': 'DuckConfit.jpg',
+  'Mushroom Risotto': 'MushroomRisotto.jpg',
 
   // Desserts
-  'Chocolate Noir': '/ChocolateNoir.jpg',
-  'Crème Brûlée': '/CrèmeBrûlée.jpg',
-  'Passion Fruit Tart': '/PassionFruitTart.jpg',
+  'Chocolate Noir': 'ChocolateNoir.jpg',
+  'Crème Brûlée': 'CrèmeBrûlée.jpg',
+  'Passion Fruit Tart': 'PassionFruitTart.jpg',
 
   // Drinks
-  'Noir Negroni': '/NoirNegroni.jpg',
-  'Smoked Old Fashioned': '/SmokedOldFashioned.jpg',
-  'French 75': '/French75.jpg',
+  'Noir Negroni': 'NoirNegroni.jpg',
+  'Smoked Old Fashioned': 'SmokedOldFashioned.jpg',
+  'French 75': 'French75.jpg',
 
   // Specials
-  'Wagyu Sliders (Special)': '/WagyuSliders.jpg',
+  'Wagyu Sliders (Special)': 'WagyuSliders.jpg',
 };
 
 /**
