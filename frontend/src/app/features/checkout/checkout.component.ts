@@ -5,39 +5,47 @@ import { RouterLink } from '@angular/router';
 import { CartService } from '../../core/services/cart.service';
 import { OrderCheckout } from '../../core/models/order.model';
 import { IconComponent } from '../../shared/components/icon.component';
+import { PageHeaderComponent } from '../../shared/components/page-header.component';
+import { EmptyStateComponent } from '../../shared/components/empty-state.component';
+import { CategoryIconMapperService } from '../../shared/services/category-icon-mapper.service';
 
 type OrderStep = 'cart' | 'details' | 'payment' | 'confirmed';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink, DecimalPipe, IconComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterLink,
+    DecimalPipe,
+    IconComponent,
+    PageHeaderComponent,
+    EmptyStateComponent
+  ],
   template: `
     <!-- Page Header -->
-    <div class="page-header">
-      <div class="page-header-bg"></div>
-      <div class="container p-header-section text-center">
-        <span class="section-label">Order Online</span>
-        <h1 class="section-title title-lg">Your Order</h1>
-        <div class="divider"></div>
-
-        <!-- Steps indicator -->
-        <div class="steps-bar">
-          @for (s of steps; track s.key; let i = $index) {
-            <div class="step-item" [class.active]="currentStep() === s.key" [class.done]="isStepDone(s.key)">
-              <div class="step-circle">
-                @if (isStepDone(s.key)) { <app-icon name="check" strokeWidth="2"></app-icon> }
-                @else { {{ i + 1 }} }
-              </div>
-              <span class="step-label">{{ s.label }}</span>
+    <app-page-header
+      label="Order Online"
+      title="Your Order"
+      [showDivider]="true">
+      <!-- Steps indicator -->
+      <div class="steps-bar">
+        @for (s of steps; track s.key; let i = $index) {
+          <div class="step-item" [class.active]="currentStep() === s.key" [class.done]="isStepDone(s.key)">
+            <div class="step-circle">
+              @if (isStepDone(s.key)) { <app-icon name="check" strokeWidth="2"></app-icon> }
+              @else { {{ i + 1 }} }
             </div>
-            @if (i < steps.length - 1) {
-              <div class="step-connector" [class.done]="isStepDone(s.key)"></div>
-            }
+            <span class="step-label">{{ s.label }}</span>
+          </div>
+          @if (i < steps.length - 1) {
+            <div class="step-connector" [class.done]="isStepDone(s.key)"></div>
           }
-        </div>
+        }
       </div>
-    </div>
+    </app-page-header>
 
     <div class="container section-sm">
 
@@ -48,17 +56,19 @@ type OrderStep = 'cart' | 'details' | 'payment' | 'confirmed';
             <h2 class="step-title">Your Cart</h2>
 
             @if (cartService.isEmpty()) {
-              <div class="empty-cart">
-                <app-icon name="cart" class="empty-icon"></app-icon>
-                <h3>Your cart is empty</h3>
-                <p class="text-muted">Add some dishes from the menu to get started.</p>
-                <a routerLink="/menu" class="btn btn-primary">Browse Menu</a>
-              </div>
+              <app-empty-state
+                icon="cart"
+                title="Your cart is empty"
+                message="Add some dishes from the menu to get started."
+                [showAction]="true"
+                actionLabel="Browse Menu"
+                (action)="goToMenu()">
+              </app-empty-state>
             } @else {
               <div class="cart-items">
                 @for (item of cartService.items(); track item.menuItem.id) {
                   <div class="cart-item card">
-                    <app-icon [name]="getCategoryIcon(item.menuItem.category)" class="cart-item-emoji"></app-icon>
+                    <app-icon [name]="categoryIconMapper.getIcon(item.menuItem.category)" class="cart-item-emoji"></app-icon>
                     <div class="cart-item-info">
                       <h4>{{ item.menuItem.name }}</h4>
                       <span class="text-muted text-sm">{{ item.menuItem.category }}</span>
@@ -287,6 +297,7 @@ type OrderStep = 'cart' | 'details' | 'payment' | 'confirmed';
 })
 export class CheckoutComponent {
   cartService = inject(CartService);
+  categoryIconMapper = inject(CategoryIconMapperService);
   private fb  = inject(FormBuilder);
 
   steps = [
@@ -339,6 +350,10 @@ export class CheckoutComponent {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  goToMenu(): void {
+    // Navigate to menu - handled by empty state action
+  }
+
   placeOrder(): void {
     if (this.paymentForm.invalid) {
       this.paymentForm.markAllAsTouched();
@@ -360,13 +375,5 @@ export class CheckoutComponent {
       this.currentStep.set('confirmed');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-  }
-
-  getCategoryIcon(category: string): string {
-    const map: Record<string, string> = {
-      Appetizers: 'category_appetizers', Mains: 'category_mains', Desserts: 'category_desserts',
-      Drinks: 'category_drinks', Specials: 'category_specials'
-    };
-    return map[category] ?? 'food';
   }
 }

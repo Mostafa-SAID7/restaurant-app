@@ -7,11 +7,24 @@ import { CartService } from '../../core/services/cart.service';
 import { MenuItem } from '../../core/models/menu-item.model';
 import { Review } from '../../core/models/review.model';
 import { IconComponent } from '../../shared/components/icon.component';
+import { SectionHeaderComponent } from '../../shared/components/section-header.component';
+import { MenuItemCardComponent } from '../../shared/components/menu-item-card.component';
+import { ReviewCardComponent } from '../../shared/components/review-card.component';
+import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner.component';
+import { CategoryIconMapperService } from '../../shared/services/category-icon-mapper.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, CommonModule, IconComponent],
+  imports: [
+    RouterLink,
+    CommonModule,
+    IconComponent,
+    SectionHeaderComponent,
+    MenuItemCardComponent,
+    ReviewCardComponent,
+    LoadingSpinnerComponent
+  ],
   template: `
     <!-- Hero Section -->
     <section class="hero">
@@ -60,43 +73,23 @@ import { IconComponent } from '../../shared/components/icon.component';
     <!-- Featured Items Section -->
     <section class="section">
       <div class="container">
-        <div class="section-header">
-          <span class="section-label">Hand-picked by our Chef</span>
-          <h2 class="section-title">Tonight's Highlights</h2>
-          <div class="divider"></div>
-          <p class="section-subtitle">A curated selection of signature dishes that define the NooR experience.</p>
-        </div>
+        <app-section-header
+          label="Hand-picked by our Chef"
+          title="Tonight's Highlights"
+          subtitle="A curated selection of signature dishes that define the NooR experience."
+          [showDivider]="true">
+        </app-section-header>
 
         @if (loading()) {
-          <div class="loading-state">
-            <div class="spinner"></div>
-          </div>
+          <app-loading-spinner></app-loading-spinner>
         } @else {
           <div class="featured-grid">
             @for (item of featuredItems(); track item.id) {
-              <article class="featured-card card">
-                <div class="featured-card-image">
-                  <div class="image-placeholder">
-                    <app-icon [name]="getCategoryIcon(item.category)" strokeWidth="1"></app-icon>
-                  </div>
-                  <div class="card-overlay">
-                    <span class="badge badge-accent">{{ item.category }}</span>
-                    @if (item.tags?.includes('chef-special')) {
-                      <span class="chef-badge">Chef's Special</span>
-                    }
-                  </div>
-                </div>
-                <div class="featured-card-body">
-                  <h3>{{ item.name }}</h3>
-                  <p class="text-muted">{{ item.description }}</p>
-                  <div class="card-footer">
-                    <span class="price">\${{ item.price }}</span>
-                    <button class="btn btn-primary btn-sm" (click)="addToCart(item)">
-                      Add to Order
-                    </button>
-                  </div>
-                </div>
-              </article>
+              <app-menu-item-card
+                [item]="item"
+                [categoryIcon]="categoryIconMapper.getIcon(item.category)"
+                (addToCart)="addToCart($event)">
+              </app-menu-item-card>
             }
           </div>
 
@@ -166,34 +159,16 @@ import { IconComponent } from '../../shared/components/icon.component';
     <!-- Reviews Section -->
     <section class="section bg-surface">
       <div class="container">
-        <div class="section-header">
-          <span class="section-label">What Our Guests Say</span>
-          <h2 class="section-title">Stories of Excellence</h2>
-          <div class="divider"></div>
-        </div>
+        <app-section-header
+          label="What Our Guests Say"
+          title="Stories of Excellence"
+          [showDivider]="true">
+        </app-section-header>
 
         @if (reviews().length > 0) {
           <div class="reviews-grid">
             @for (review of reviews(); track review.id) {
-              <div class="review-card card">
-                <div class="review-header">
-                  <div class="reviewer-avatar">{{ review.customerName[0] }}</div>
-                  <div>
-                    <strong>{{ review.customerName }}</strong>
-                    <div class="stars">
-                      @for (s of [1,2,3,4,5]; track s) {
-                        @if (s <= review.rating) { <app-icon name="starFill" class="star text-accent"></app-icon> }
-                        @else { <app-icon name="star" class="star text-muted"></app-icon> }
-                      }
-                    </div>
-                  </div>
-                  @if (review.verified) {
-                    <span class="verified-badge"><app-icon name="check" strokeWidth="2.5" class="mr-1"></app-icon> Verified</span>
-                  }
-                </div>
-                <p class="review-text">"{{ review.comment }}"</p>
-                <span class="review-date text-muted">{{ review.date | date:'MMMM d, yyyy' }}</span>
-              </div>
+              <app-review-card [review]="review"></app-review-card>
             }
           </div>
         }
@@ -217,6 +192,7 @@ export class HomeComponent implements OnInit {
   private menuService   = inject(MenuService);
   private reviewService = inject(ReviewService);
   private cartService   = inject(CartService);
+  categoryIconMapper    = inject(CategoryIconMapperService);
 
   featuredItems = signal<MenuItem[]>([]);
   reviews       = signal<Review[]>([]);
@@ -232,13 +208,5 @@ export class HomeComponent implements OnInit {
 
   addToCart(item: MenuItem): void {
     this.cartService.addItem(item);
-  }
-
-  getCategoryIcon(category: string): string {
-    const map: Record<string, string> = {
-      Appetizers: 'category_appetizers', Mains: 'category_mains', Desserts: 'category_desserts',
-      Drinks: 'category_drinks', Specials: 'category_specials'
-    };
-    return map[category] ?? 'food';
   }
 }
