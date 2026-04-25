@@ -116,6 +116,10 @@ export default {
         spin: {
           to: { transform: 'rotate(360deg)' },
         },
+        shimmer: {
+          '0%':   { transform: 'translateX(-100%) skewX(-15deg)' },
+          '100%': { transform: 'translateX(200%) skewX(-15deg)' },
+        },
       },
       animation: {
         'fade-up':    'fadeInUp 0.6s ease forwards',
@@ -123,6 +127,7 @@ export default {
         'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
         'float':      'floatPulse 2s ease-in-out infinite alternate',
         'spin-slow':  'spin 0.8s linear infinite',
+        'shimmer':    'shimmer 4s ease-in-out infinite',
       },
     },
   },

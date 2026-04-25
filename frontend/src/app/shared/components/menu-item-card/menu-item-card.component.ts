@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuItem } from '../../../core/models/menu-item.model';
 import { IconComponent } from '../icon.component';
@@ -12,6 +12,7 @@ import { IconComponent } from '../icon.component';
   selector: 'app-menu-item-card',
   standalone: true,
   imports: [CommonModule, IconComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './menu-item-card.component.html'
 })
 export class MenuItemCardComponent {

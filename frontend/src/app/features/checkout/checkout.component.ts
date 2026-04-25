@@ -68,8 +68,11 @@ type OrderStep = 'cart' | 'details' | 'payment' | 'confirmed';
         <div class="flex flex-col lg:flex-row gap-12 items-start">
           <div class="flex-1 w-full animate-fade-up">
             <div class="flex items-center justify-between mb-8 border-b border-border pb-4">
-              <h2 class="text-2xl font-serif">Your Selection</h2>
-              <span class="text-sm text-text-muted">{{ cartService.items().length }} items</span>
+              <h2 class="text-2xl font-serif text-text">Your Selection</h2>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/30 text-accent text-sm font-bold">
+                <app-icon name="cart" class="text-xs" strokeWidth="2.5"></app-icon>
+                {{ cartService.items().length }} {{ cartService.items().length === 1 ? 'item' : 'items' }}
+              </span>
             </div>
 
             @if (cartService.isEmpty()) {

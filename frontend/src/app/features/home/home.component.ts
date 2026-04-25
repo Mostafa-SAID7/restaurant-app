@@ -102,11 +102,9 @@ import { fadeUp, staggerFadeUp, scaleIn } from '../../shared/animations/fade.ani
       </div>
       
       <!-- Premium Transition Fade-out with Deeper Blur -->
-      <div class="absolute bottom-0 left-0 right-0 h-64 pointer-events-none z-10 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/95 to-transparent"></div>
-        <div class="absolute inset-0 backdrop-blur-2xl [mask-image:linear-gradient(to_top,black_10%,transparent)] opacity-40"></div>
-        <div class="absolute inset-0 backdrop-blur-md [mask-image:linear-gradient(to_top,black_30%,transparent)] opacity-60"></div>
-        <div class="absolute bottom-0 left-0 right-0 h-px bg-white/5"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-80 pointer-events-none z-10">
+        <div class="absolute inset-0 backdrop-blur-2xl [mask-image:linear-gradient(to_top,black_50%,transparent)] z-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/70 to-transparent z-10"></div>
       </div>
     </section>
 
@@ -184,8 +182,8 @@ import { fadeUp, staggerFadeUp, scaleIn } from '../../shared/animations/fade.ani
 
           <div class="relative lg:mt-0 mt-12 group">
             <!-- Experience Image -->
-            <div class="aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl relative border border-white/5">
-              <img src="/philosophy-premium.png" alt="The Art of Fine Dining" 
+            <div class="aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl relative border border-white/5 mask-gradient-to-b">
+              <img src="/philosophy-final.png" alt="The Art of Fine Dining" 
                    class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
               <div class="absolute inset-0 bg-gradient-to-t from-bg/90 via-transparent to-transparent"></div>
               <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[4rem]"></div>

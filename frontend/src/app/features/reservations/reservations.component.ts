@@ -6,28 +6,20 @@ import { ReservationResponse } from '../../core/models/reservation.model';
 import { IconComponent } from '../../shared/components/icon.component';
 import { CustomSelectComponent } from '../../shared/components/custom-select.component';
 import { CustomCalendarComponent } from '../../shared/components/custom-calendar.component';
+import { PageHeaderComponent } from '../../shared/components/page-header/page-header.component';
 
 @Component({
   selector: 'app-reservations',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, IconComponent, CustomSelectComponent, CustomCalendarComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, IconComponent, CustomSelectComponent, CustomCalendarComponent, PageHeaderComponent],
   template: `
-    <!-- Page Header -->
-    <div class="relative pt-32 pb-24 overflow-hidden border-b border-white/5">
-      <div class="absolute inset-0 bg-[url('/assets/images/reservations-bg.jpg')] bg-cover bg-center opacity-20 scale-105"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-bg/0 via-bg/60 to-bg"></div>
-      
-      <div class="container relative z-10 text-center px-6">
-        <span class="inline-block text-accent text-xs font-bold uppercase tracking-[0.2em] mb-4 animate-fade-up">Your Table Awaits</span>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6 animate-fade-up" style="animation-delay: 0.1s">
-          Reserve a Table
-        </h1>
-        <div class="w-16 h-1 bg-accent mx-auto rounded-full mb-8 animate-fade-up" style="animation-delay: 0.2s"></div>
-        <p class="max-w-2xl mx-auto text-lg text-muted/80 leading-relaxed animate-fade-up" style="animation-delay: 0.3s">
-          A seamless reservation experience for an evening you'll never forget.
-        </p>
-      </div>
-    </div>
+    <app-page-header
+      label="Your Table Awaits"
+      title="Reserve a Table"
+      subtitle="A seamless reservation experience for an evening you'll never forget."
+      backgroundImage="/assets/images/reservations-bg.jpg">
+    </app-page-header>
+
 
     <div class="container py-24 px-6 relative">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">

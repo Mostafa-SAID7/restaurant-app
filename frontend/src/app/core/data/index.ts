@@ -8,3 +8,5 @@ export * from './order-types';
 export * from './restaurant-info';
 export * from './team';
 export * from './values';
+export * from './menu';
+export * from './images';

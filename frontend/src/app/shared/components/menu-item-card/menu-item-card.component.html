@@ -1,6 +1,6 @@
-<article class="flex flex-col h-full overflow-hidden rounded-[2rem] bg-bg-surface border border-border/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-accent/40 group relative">
+<article class="flex flex-col h-full overflow-hidden rounded-[2rem] bg-bg-surface border border-border/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-accent/40 group relative shadow-lg">
   <!-- Image Container -->
-  <div class="relative w-full aspect-[4/3] overflow-hidden bg-bg-surface-2 rounded-t-[2rem]">
+  <div class="relative w-full aspect-[4/3] overflow-hidden bg-bg-surface-2 rounded-[2rem] m-2 shadow-inner">
     @if (item.image) {
       <img [src]="item.image" [alt]="item.name" class="w-full h-full object-cover object-center block transition-transform duration-700 group-hover:scale-110" />
     } @else {
@@ -20,8 +20,8 @@
     </div>
 
     <!-- Hover Info Overlay -->
-    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center pointer-events-none">
-      <div class="w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center scale-75 group-hover:scale-100 transition-transform duration-500 shadow-xl">
+    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center pointer-events-none rounded-[2rem]">
+      <div class="w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center scale-75 group-hover:scale-100 transition-transform duration-500 shadow-xl shadow-accent/20">
         <app-icon name="plus" strokeWidth="2.5"></app-icon>
       </div>
     </div>

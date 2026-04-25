@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /**
@@ -10,11 +10,13 @@ import { CommonModule } from '@angular/common';
   selector: 'app-page-header',
   standalone: true,
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './page-header.component.html'
 })
 export class PageHeaderComponent {
   @Input() label: string = '';
   @Input() title: string = '';
   @Input() subtitle: string = '';
+  @Input() backgroundImage: string = '';
   @Input() showDivider: boolean = true;
 }

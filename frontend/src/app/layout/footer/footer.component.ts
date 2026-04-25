@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { IconComponent } from '../../shared/components/icon.component';
@@ -7,8 +7,9 @@ import { IconComponent } from '../../shared/components/icon.component';
   selector: 'app-footer',
   standalone: true,
   imports: [RouterLink, IconComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <footer class="bg-surface border-t border-white/5 pt-20 pb-10">
+    <footer class="bg-surface pt-20 pb-10">
       <div class="container">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/5">
           <!-- Brand -->

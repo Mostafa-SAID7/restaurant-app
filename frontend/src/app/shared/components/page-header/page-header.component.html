@@ -1,8 +1,11 @@
 <div class="relative py-24 overflow-hidden md:py-32">
   <!-- Dynamic Background with Overlay -->
-  <div class="absolute inset-0 bg-bg-surface-2 z-0">
-    <div class="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent opacity-50"></div>
-    <!-- Subtle pattern or grain could go here -->
+  <div class="absolute inset-0 bg-bg z-0">
+    @if (backgroundImage) {
+      <div class="absolute inset-0 bg-cover bg-center opacity-20 scale-105" [style.backgroundImage]="'url(' + backgroundImage + ')'"></div>
+    }
+    <div class="absolute inset-0 bg-gradient-to-b from-accent/10 via-bg/60 to-bg"></div>
+    <!-- Subtle pattern or grain -->
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(191,155,48,0.08),transparent_50%)]"></div>
   </div>
 
@@ -32,5 +35,11 @@
         <ng-content></ng-content>
       </div>
     </div>
+  </div>
+
+  <!-- Bottom Blur Transition -->
+  <div class="absolute bottom-0 left-0 right-0 h-48 pointer-events-none z-10">
+    <div class="absolute inset-0 backdrop-blur-xl [mask-image:linear-gradient(to_top,black_50%,transparent)] z-0"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/70 to-transparent z-10"></div>
   </div>
 </div>
