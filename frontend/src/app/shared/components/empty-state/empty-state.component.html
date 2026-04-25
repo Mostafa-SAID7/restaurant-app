@@ -1,0 +1,15 @@
+<div class="empty-state">
+  <div class="empty-state-icon">
+    <app-icon [name]="icon" class="icon-lg"></app-icon>
+  </div>
+  <h3 class="empty-state-title">{{ title }}</h3>
+  @if (message) {
+    <p class="empty-state-message">{{ message }}</p>
+  }
+  @if (showAction) {
+    <button class="btn btn-ghost" (click)="onActionClick()">
+      {{ actionLabel }}
+    </button>
+  }
+  <ng-content></ng-content>
+</div>

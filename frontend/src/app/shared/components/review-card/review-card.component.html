@@ -1,0 +1,25 @@
+<div class="review-card">
+  <div class="review-header">
+    <div class="reviewer-avatar">{{ review.customerName[0] }}</div>
+    <div class="reviewer-info">
+      <strong class="reviewer-name">{{ review.customerName }}</strong>
+      <div class="stars">
+        @for (s of [1,2,3,4,5]; track s) {
+          @if (s <= review.rating) {
+            <app-icon name="starFill" class="star text-accent"></app-icon>
+          } @else {
+            <app-icon name="star" class="star text-muted"></app-icon>
+          }
+        }
+      </div>
+    </div>
+    @if (review.verified) {
+      <span class="verified-badge">
+        <app-icon name="check" strokeWidth="2.5" class="mr-1"></app-icon>
+        Verified
+      </span>
+    }
+  </div>
+  <p class="review-text">"{{ review.comment }}"</p>
+  <span class="review-date">{{ review.date | date:'MMMM d, yyyy' }}</span>
+</div>

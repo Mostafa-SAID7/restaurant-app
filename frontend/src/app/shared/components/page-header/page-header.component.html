@@ -1,0 +1,16 @@
+<div class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="container p-header-section text-center">
+    @if (label) {
+      <span class="section-label">{{ label }}</span>
+    }
+    <h1 class="section-title title-lg">{{ title }}</h1>
+    @if (showDivider) {
+      <div class="divider"></div>
+    }
+    @if (subtitle) {
+      <p class="section-subtitle mt-4 mx-auto mb-0">{{ subtitle }}</p>
+    }
+    <ng-content></ng-content>
+  </div>
+</div>

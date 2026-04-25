@@ -1,0 +1,13 @@
+<div class="section-header" [class.text-left]="alignment === 'left'">
+  @if (label) {
+    <span class="section-label">{{ label }}</span>
+  }
+  <h2 class="section-title">{{ title }}</h2>
+  @if (showDivider) {
+    <div class="divider" [class.divider-left]="alignment === 'left'"></div>
+  }
+  @if (subtitle) {
+    <p class="section-subtitle">{{ subtitle }}</p>
+  }
+  <ng-content></ng-content>
+</div>

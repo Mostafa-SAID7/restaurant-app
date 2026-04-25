@@ -1,0 +1,33 @@
+<article class="menu-item-card">
+  <div class="menu-item-image">
+    <div class="image-placeholder">
+      <app-icon [name]="categoryIcon" strokeWidth="1"></app-icon>
+    </div>
+    <div class="card-overlay">
+      <span class="badge badge-accent">{{ item.category }}</span>
+      @if (item.tags?.includes('chef-special')) {
+        <span class="chef-badge">Chef's Special</span>
+      }
+      @if (item.tags?.includes('vegetarian')) {
+        <span class="veg-badge">
+          <app-icon name="leaf" class="mr-1"></app-icon>Vegetarian
+        </span>
+      }
+    </div>
+  </div>
+  <div class="menu-item-body">
+    <h3 class="menu-item-name">{{ item.name }}</h3>
+    <p class="menu-item-description">{{ item.description }}</p>
+    @if (item.allergens && item.allergens.length > 0) {
+      <div class="allergens">
+        <small>Allergens: {{ item.allergens.join(', ') }}</small>
+      </div>
+    }
+    <div class="menu-item-footer">
+      <span class="price">${{ item.price }}</span>
+      <button class="btn btn-primary btn-sm" (click)="onAddClick()">
+        Add to Order
+      </button>
+    </div>
+  </div>
+</article>

@@ -7,10 +7,10 @@ import { CartService } from '../../core/services/cart.service';
 import { MenuItem } from '../../core/models/menu-item.model';
 import { Review } from '../../core/models/review.model';
 import { IconComponent } from '../../shared/components/icon.component';
-import { SectionHeaderComponent } from '../../shared/components/section-header.component';
-import { MenuItemCardComponent } from '../../shared/components/menu-item-card.component';
-import { ReviewCardComponent } from '../../shared/components/review-card.component';
-import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner.component';
+import { SectionHeaderComponent } from '../../shared/components/section-header/section-header.component';
+import { MenuItemCardComponent } from '../../shared/components/menu-item-card/menu-item-card.component';
+import { ReviewCardComponent } from '../../shared/components/review-card/review-card.component';
+import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 import { CategoryIconMapperService } from '../../shared/services/category-icon-mapper.service';
 
 @Component({

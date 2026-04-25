@@ -5,8 +5,8 @@ import { RouterLink } from '@angular/router';
 import { CartService } from '../../core/services/cart.service';
 import { OrderCheckout } from '../../core/models/order.model';
 import { IconComponent } from '../../shared/components/icon.component';
-import { PageHeaderComponent } from '../../shared/components/page-header.component';
-import { EmptyStateComponent } from '../../shared/components/empty-state.component';
+import { PageHeaderComponent } from '../../shared/components/page-header/page-header.component';
+import { EmptyStateComponent } from '../../shared/components/empty-state/empty-state.component';
 import { CategoryIconMapperService } from '../../shared/services/category-icon-mapper.service';
 
 type OrderStep = 'cart' | 'details' | 'payment' | 'confirmed';
