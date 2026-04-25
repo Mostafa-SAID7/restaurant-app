@@ -6,7 +6,6 @@ import { CartService } from '../../core/services/cart.service';
 import { MenuItem, MenuCategory } from '../../core/models/menu-item.model';
 import { IconComponent } from '../../shared/components/icon.component';
 import { PageHeaderComponent } from '../../shared/components/page-header/page-header.component';
-import { SectionHeaderComponent } from '../../shared/components/section-header/section-header.component';
 import { MenuItemCardComponent } from '../../shared/components/menu-item-card/menu-item-card.component';
 import { EmptyStateComponent } from '../../shared/components/empty-state/empty-state.component';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
@@ -22,7 +21,6 @@ type FilterCategory = 'All' | MenuCategory;
     RouterLink,
     IconComponent,
     PageHeaderComponent,
-    SectionHeaderComponent,
     MenuItemCardComponent,
     EmptyStateComponent,
     LoadingSpinnerComponent
