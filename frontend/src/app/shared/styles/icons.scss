@@ -6,22 +6,45 @@
 .ui-icon {
   display: inline-block;
   vertical-align: middle;
-  transition: transform var(--transition-base), color var(--transition-fast);
+  transition: transform var(--transition-base), color var(--transition-fast), filter var(--transition-base);
   
   /* Prevent animation jank */
   will-change: transform;
+  width: 1em;
+  height: 1em;
 }
 
 /* --- Icon Hover Effects --- */
+app-icon {
+  display: inline-block;
+  transition: transform var(--transition-base), filter var(--transition-base);
+  will-change: transform;
+}
+
+app-icon:hover,
 app-icon:hover .ui-icon,
+*:hover > app-icon,
 *:hover > app-icon .ui-icon,
+.card:hover app-icon,
 .card:hover .ui-icon,
+button:hover app-icon,
 button:hover .ui-icon,
+a:hover app-icon,
 a:hover .ui-icon,
+.contact-detail:hover app-icon,
 .contact-detail:hover .ui-icon,
+.nav-link:hover app-icon,
 .nav-link:hover .ui-icon {
   transform: scale(1.2) translateY(-2px);
-  filter: drop-shadow(0 3px 6px var(--color-accent-shadow, rgba(230, 126, 34, 0.45)));
+  filter: drop-shadow(0 3px 6px rgba(230, 126, 34, 0.45));
+}
+
+/* SVG specific styling */
+app-icon svg {
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform var(--transition-base), filter var(--transition-base);
+  will-change: transform;
 }
 
 /* --- Icon Size Utilities --- */
@@ -95,6 +118,27 @@ a:hover .ui-icon,
   color: var(--color-text-light);
 }
 
+/* --- Icon Hover Color Effects --- */
+app-icon.icon-accent:hover,
+.icon-accent:hover app-icon {
+  color: var(--color-accent-hover);
+}
+
+app-icon.icon-success:hover,
+.icon-success:hover app-icon {
+  color: #2ecc71;
+}
+
+app-icon.icon-error:hover,
+.icon-error:hover app-icon {
+  color: #ff6b6b;
+}
+
+app-icon.icon-warning:hover,
+.icon-warning:hover app-icon {
+  color: #ffd93d;
+}
+
 /* --- Icon Spacing Utilities --- */
 .icon-inline {
   vertical-align: -0.15em;
@@ -116,7 +160,7 @@ a:hover .ui-icon,
 
 /* --- Icon Animation Utilities --- */
 .icon-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .icon-spin {
@@ -125,6 +169,10 @@ a:hover .ui-icon,
 
 .icon-bounce {
   animation: bounce 1s infinite;
+}
+
+.icon-glow {
+  animation: iconGlow 2s ease-in-out infinite;
 }
 
 /* --- Icon Button Styles --- */
@@ -140,8 +188,17 @@ a:hover .ui-icon,
   cursor: pointer;
   transition: all var(--transition-base);
   
+  app-icon {
+    transition: transform var(--transition-base), filter var(--transition-base);
+  }
+  
   &:hover {
     background: var(--color-bg-hover);
+    
+    app-icon {
+      transform: scale(1.2) translateY(-2px);
+      filter: drop-shadow(0 3px 6px rgba(230, 126, 34, 0.45));
+    }
   }
   
   &:active {
@@ -152,11 +209,19 @@ a:hover .ui-icon,
 .icon-button-sm {
   width: 24px;
   height: 24px;
+  
+  app-icon {
+    font-size: 0.9rem;
+  }
 }
 
 .icon-button-lg {
   width: 40px;
   height: 40px;
+  
+  app-icon {
+    font-size: 1.3rem;
+  }
 }
 
 /* --- Icon Badge Styles --- */
@@ -235,21 +300,33 @@ a:hover .ui-icon,
   color: var(--color-accent);
   font-size: 1.1rem;
   animation: pulse-glow 3s ease-in-out infinite;
+  
+  app-icon {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
 }
 
 /* Calendar Icons */
 .calendar-icon {
   color: var(--color-accent);
   font-size: 1.2rem;
+  transition: all var(--transition-base);
+  
+  &:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 2px 4px rgba(230, 126, 34, 0.4));
+  }
 }
 
 /* Info Icons */
 .info-icon {
   font-size: 1.4rem;
   color: var(--color-accent);
+  transition: all var(--transition-base);
   
   &:hover {
     transform: scale(1.1);
+    filter: drop-shadow(0 2px 4px rgba(230, 126, 34, 0.4));
   }
 }
 
@@ -257,18 +334,31 @@ a:hover .ui-icon,
 .contact-icon {
   font-size: 1.4rem;
   color: var(--color-accent);
+  transition: all var(--transition-base);
+  
+  &:hover {
+    transform: scale(1.15) translateY(-2px);
+    filter: drop-shadow(0 3px 6px rgba(230, 126, 34, 0.45));
+  }
 }
 
 /* Feature Icons */
 .feature-icon {
   font-size: 2.5rem;
   color: var(--color-accent);
+  transition: all var(--transition-base);
+  
+  &:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(230, 126, 34, 0.4));
+  }
 }
 
 /* Badge Icons */
 .badge-icon {
   font-size: 1.5rem;
   color: var(--color-accent);
+  transition: all var(--transition-base);
 }
 
 /* Story Icons */
@@ -276,28 +366,52 @@ a:hover .ui-icon,
   font-size: 5rem;
   color: var(--color-text-muted);
   opacity: 0.5;
+  transition: all var(--transition-base);
+  
+  &:hover {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
 }
 
 /* Value Icons */
 .value-icon {
   font-size: 2.5rem;
+  transition: all var(--transition-base);
+  
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 /* Order Type Icons */
 .type-icon {
   font-size: 1.5rem;
   color: var(--color-accent);
+  transition: all var(--transition-base);
+  
+  &:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 2px 4px rgba(230, 126, 34, 0.4));
+  }
 }
 
 /* Menu Section Icons */
 .menu-section-icon {
   font-size: 1.5rem;
   color: var(--color-accent);
+  transition: all var(--transition-base);
+  
+  &:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 2px 4px rgba(230, 126, 34, 0.4));
+  }
 }
 
 /* Cart Item Icons */
 .cart-item-emoji {
   font-size: 1.5rem;
+  transition: all var(--transition-base);
 }
 
 /* Empty State Icons */
@@ -305,6 +419,7 @@ a:hover .ui-icon,
   font-size: 3rem;
   color: var(--color-text-muted);
   opacity: 0.5;
+  transition: all var(--transition-base);
 }
 
 /* Confirmation Icons */
@@ -319,12 +434,19 @@ a:hover .ui-icon,
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 
 /* Star Rating Icons */
 .star-icon {
   color: var(--color-accent);
   font-size: 1.2rem;
+  transition: all var(--transition-base);
+  
+  &:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 2px 4px rgba(230, 126, 34, 0.4));
+  }
 }
 
 /* Search Icons */
@@ -335,6 +457,7 @@ a:hover .ui-icon,
   transform: translateY(-50%);
   color: var(--color-text-muted);
   pointer-events: none;
+  transition: all var(--transition-base);
 }
 
 /* Select Dropdown Arrow */
@@ -361,6 +484,7 @@ a:hover .ui-icon,
   
   &:hover {
     background: var(--color-bg-hover);
+    transform: scale(1.1);
   }
 }
 
@@ -385,6 +509,15 @@ a:hover .ui-icon,
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes iconGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 0 rgba(230, 126, 34, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(230, 126, 34, 0.6));
   }
 }
 

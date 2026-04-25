@@ -67,11 +67,32 @@ const SVG_ICONS: Record<string, string> = {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <svg xmlns="http://www.w3.org/2000/svg" [attr.viewBox]="viewBox" 
-         [attr.fill]="fill" [attr.stroke]="stroke" [attr.stroke-width]="strokeWidth"
-         [innerHTML]="safeHtml" class="ui-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         [attr.viewBox]="viewBox" 
+         [attr.fill]="fill" 
+         [attr.stroke]="stroke" 
+         [attr.stroke-width]="strokeWidth"
+         [innerHTML]="safeHtml" 
+         class="ui-icon"
+         role="img"
+         [attr.aria-hidden]="true">
     </svg>
-  `
+  `,
+  styles: [`
+    :host {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    
+    svg {
+      display: inline-block;
+      vertical-align: middle;
+      width: 1em;
+      height: 1em;
+      transition: transform 250ms ease, filter 250ms ease;
+      will-change: transform;
+    }
+  `]
 })
 export class IconComponent implements OnChanges {
   @Input({ required: true }) name!: string;
