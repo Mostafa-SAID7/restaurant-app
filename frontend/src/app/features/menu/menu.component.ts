@@ -1,6 +1,5 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { MenuService } from '../../core/services/menu.service';
 import { CartService } from '../../core/services/cart.service';
@@ -20,7 +19,6 @@ type FilterCategory = 'All' | MenuCategory;
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
     RouterLink,
     IconComponent,
     PageHeaderComponent,
@@ -48,8 +46,8 @@ type FilterCategory = 'All' | MenuCategory;
             type="text"
             class="form-input search-input"
             placeholder="Search dishes, ingredients..."
-            [(ngModel)]="searchQuery"
-            (ngModelChange)="onSearch($event)"
+            [value]="searchQuery"
+            (input)="onSearch($event)"
           />
           @if (searchQuery) {
             <button class="search-clear" (click)="clearSearch()"><app-icon name="close"></app-icon></button>
@@ -174,8 +172,9 @@ export class MenuComponent implements OnInit {
     this.applyFilter();
   }
 
-  onSearch(query: string): void {
-    this.searchQuery = query;
+  onSearch(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.searchQuery = target.value;
     this.selectedCategory.set('All');
     this.applyFilter();
   }

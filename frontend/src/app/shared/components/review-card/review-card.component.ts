@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Review } from '../../core/models/review.model';
+import { Review } from '../../../core/models/review.model';
 import { IconComponent } from '../icon.component';
 
 /**

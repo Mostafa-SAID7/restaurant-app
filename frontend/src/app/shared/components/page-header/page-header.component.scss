@@ -3,87 +3,50 @@
 }
 
 .page-header {
-  position: relative;
-  padding: 4rem 0;
-  overflow: hidden;
-
-  @media (max-width: 768px) {
-    padding: 2.5rem 0;
-  }
+  @apply relative py-16 overflow-hidden md:py-10;
 }
 
 .page-header-bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(230, 126, 34, 0.1) 0%, rgba(230, 126, 34, 0.05) 100%);
-  z-index: 0;
+  @apply absolute inset-0 bg-gradient-to-br from-accent/10 to-accent/5 z-0;
 }
 
 .p-header-section {
-  position: relative;
-  z-index: 1;
+  @apply relative z-1;
 }
 
 .section-label {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: rgba(230, 126, 34, 0.12);
-  color: #E67E22;
-  border-radius: 0.25rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 1rem;
+  @apply inline-block px-4 py-2 bg-accent-muted text-accent rounded-sm text-xs font-bold uppercase tracking-wider mb-4;
 }
 
 .section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin: 0;
-  color: #F5F5F5;
-
-  @media (max-width: 768px) {
-    font-size: 1.875rem;
-  }
+  @apply text-5xl md:text-4xl font-bold m-0 text-text;
 }
 
 .title-lg {
-  font-size: 2.5rem;
-  font-weight: 700;
-
-  @media (max-width: 768px) {
-    font-size: 1.875rem;
-  }
+  @apply text-5xl md:text-4xl font-bold;
 }
 
 .divider {
-  width: 3rem;
-  height: 0.25rem;
-  background: linear-gradient(90deg, transparent, #E67E22, transparent);
-  margin: 1.5rem auto;
+  @apply w-12 h-1 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto my-6;
 }
 
 .section-subtitle {
-  font-size: 1rem;
-  color: #9A9A9A;
-  max-width: 600px;
-  line-height: 1.6;
+  @apply text-base text-text-muted max-w-2xl leading-relaxed;
 }
 
 .mt-4 {
-  margin-top: 1rem;
+  @apply mt-4;
 }
 
 .mx-auto {
-  margin-left: auto;
-  margin-right: auto;
+  @apply mx-auto;
 }
 
 .mb-0 {
-  margin-bottom: 0;
+  @apply mb-0;
 }
 
 .text-center {
-  text-align: center;
+  @apply text-center;
 }
+

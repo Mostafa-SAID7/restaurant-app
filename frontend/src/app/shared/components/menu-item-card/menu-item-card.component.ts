@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuItem } from '../../core/models/menu-item.model';
+import { MenuItem } from '../../../core/models/menu-item.model';
 import { IconComponent } from '../icon.component';
 
 /**
