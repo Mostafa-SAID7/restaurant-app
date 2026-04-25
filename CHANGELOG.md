@@ -27,6 +27,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enhanced icon hover effects with animations
 - Niche analysis and content optimization documentation
 - Implementation status tracking documentation
+- Image mapping system for menu items
+  - Centralized image constants mapping item names to image paths
+  - Automatic image population in menu service
+  - Image display in menu item cards with fallback support
+  - Image hover effects with scale and smooth transitions
+- IMAGE_SYSTEM_SETUP.md documentation
 
 ### Changed
 - Updated menu.component.ts: replaced ngModel binding with input event binding
@@ -36,6 +42,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactored component imports in home, menu, and checkout components
 - Improved component organization with separate file structure
 - Enhanced responsive design using Tailwind breakpoints
+- Updated menu service to use modern Angular inject() pattern
+- Menu items now include image field populated from image mapping constants
 
 ### Fixed
 - Fixed menu component search input event handling

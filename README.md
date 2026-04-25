@@ -271,6 +271,8 @@ Comprehensive documentation is available in the `docs/` folder:
 - [CHANGELOG.md](CHANGELOG.md) - Version history and recent changes
 - [TAILWIND_MIGRATION_STATUS.md](TAILWIND_MIGRATION_STATUS.md) - Tailwind CSS migration details
 - [QUICK_START_NEXT_STEPS.md](QUICK_START_NEXT_STEPS.md) - Quick reference for development
+- [IMAGE_SYSTEM_SETUP.md](IMAGE_SYSTEM_SETUP.md) - Image mapping system for menu items
+- [DOCUMENTATION_SUMMARY.md](DOCUMENTATION_SUMMARY.md) - Complete documentation index
 
 ## 📝 Changelog
 

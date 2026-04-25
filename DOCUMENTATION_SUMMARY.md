@@ -169,6 +169,22 @@ This document provides a comprehensive overview of all documentation files and t
 
 ---
 
+#### [IMAGE_SYSTEM_SETUP.md](IMAGE_SYSTEM_SETUP.md)
+**Purpose**: Image mapping system for menu items
+**Contains**:
+- Image mapping constants overview
+- Menu service image integration
+- Menu item card template updates
+- Image styling with Tailwind CSS
+- How the image system works
+- Benefits and features
+- Instructions for adding new images
+- Testing procedures
+
+**When to Read**: When working with menu item images or adding new dishes
+
+---
+
 ## 🔗 Documentation Cross-References
 
 ### For New Developers
@@ -206,6 +222,7 @@ This document provides a comprehensive overview of all documentation files and t
 | CHANGELOG.md | Version history | 200+ | April 25, 2026 |
 | TAILWIND_MIGRATION_STATUS.md | Tailwind CSS status | 140+ | April 25, 2026 |
 | QUICK_START_NEXT_STEPS.md | Quick reference | 160+ | April 25, 2026 |
+| IMAGE_SYSTEM_SETUP.md | Image system guide | 120+ | April 25, 2026 |
 | docs/SETUP.md | Setup guide | 180+ | April 25, 2026 |
 | docs/ARCHITECTURE.md | Architecture guide | 250+ | April 25, 2026 |
 | docs/API.md | API documentation | 150+ | April 25, 2026 |
@@ -213,7 +230,7 @@ This document provides a comprehensive overview of all documentation files and t
 | docs/DEPLOYMENT.md | Deployment guide | 150+ | April 25, 2026 |
 | docs/DOCKER.md | Docker guide | 120+ | April 25, 2026 |
 
-**Total Documentation**: 1,700+ lines
+**Total Documentation**: 1,820+ lines
 
 ## 🎯 Key Topics by Documentation
 
@@ -222,6 +239,11 @@ This document provides a comprehensive overview of all documentation files and t
 - [TAILWIND_MIGRATION_STATUS.md](TAILWIND_MIGRATION_STATUS.md) - Detailed status
 - [docs/ARCHITECTURE.md#styling-with-tailwind-css](docs/ARCHITECTURE.md#styling-with-tailwind-css) - Architecture
 - [docs/CONTRIBUTING.md#tailwind-css-guidelines](docs/CONTRIBUTING.md#tailwind-css-guidelines) - Guidelines
+
+### Image System
+- [IMAGE_SYSTEM_SETUP.md](IMAGE_SYSTEM_SETUP.md) - Complete guide
+- [docs/ARCHITECTURE.md#component-structure](docs/ARCHITECTURE.md#component-structure) - Component integration
+- Menu item images automatically mapped by name
 
 ### Components
 - [docs/ARCHITECTURE.md#component-structure](docs/ARCHITECTURE.md#component-structure) - Structure
@@ -248,6 +270,7 @@ This document provides a comprehensive overview of all documentation files and t
 - ✅ CHANGELOG.md - Version history documented
 - ✅ TAILWIND_MIGRATION_STATUS.md - Migration details
 - ✅ QUICK_START_NEXT_STEPS.md - Quick reference
+- ✅ IMAGE_SYSTEM_SETUP.md - Image system guide
 - ✅ docs/SETUP.md - Setup instructions with Tailwind info
 - ✅ docs/ARCHITECTURE.md - Architecture with component structure
 - ✅ docs/API.md - API documentation
