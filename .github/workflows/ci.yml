@@ -29,6 +29,12 @@ jobs:
         working-directory: ./frontend
         run: npm ci
 
+      - name: Verify Tailwind CSS configuration
+        working-directory: ./frontend
+        run: |
+          test -f tailwind.config.ts && echo "✓ Tailwind config found"
+          test -f postcss.config.js && echo "✓ PostCSS config found"
+
       - name: Lint code
         working-directory: ./frontend
         run: npm run ng -- lint || true

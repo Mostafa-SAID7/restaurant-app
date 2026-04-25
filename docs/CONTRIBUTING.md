@@ -226,32 +226,115 @@ export class MenuComponent {}
 ### SCSS
 
 ```scss
-// Use variables for colors
-$primary-color: #ff6b6b;
-$secondary-color: #4ecdc4;
-
-// Use nesting
-.menu {
-  display: flex;
+// Use Tailwind CSS utilities with @apply
+.menu-item {
+  @apply flex items-center justify-between gap-4 p-4 rounded-lg;
+  @apply bg-surface border border-border transition-all duration-250;
   
-  &-item {
-    padding: 1rem;
-    
-    &:hover {
-      background-color: $primary-color;
-    }
+  &:hover {
+    @apply bg-surface-2 border-accent transform scale-105;
   }
 }
 
-// Use mixins for reusable styles
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// Use custom theme colors from tailwind.config.ts
+.accent-text {
+  @apply text-accent font-semibold;
 }
 
-.centered {
-  @include flex-center;
+// Avoid hardcoded values - use Tailwind utilities
+// ❌ Bad: padding: 16px; color: #E67E22;
+// ✅ Good: @apply p-4 text-accent;
+```
+
+### Tailwind CSS Guidelines
+
+1. **Use Tailwind Utilities**
+   - Prefer `@apply` directives in component SCSS
+   - Use custom theme colors (bg-surface, text-accent, etc.)
+   - Use custom spacing scale (p-4, gap-6, etc.)
+
+2. **Component Styling**
+   - Each component has separate SCSS file
+   - Use `@apply` for Tailwind utilities
+   - Keep styles scoped to component
+   - Reference `tailwind.config.ts` for available utilities
+
+3. **Responsive Design**
+   - Use Tailwind breakpoints: sm, md, lg, xl
+   - Mobile-first approach
+   - Test on multiple screen sizes
+
+4. **Custom Theme**
+   - Colors: Dark theme with orange accents
+   - Spacing: 0.25rem to 6rem scale
+   - Shadows: Multiple levels with accent variants
+   - Transitions: Fast (150ms), base (250ms), slow (400ms)
+
+5. **No Hardcoded Values**
+   - All colors from theme
+   - All spacing from scale
+   - All shadows from config
+   - All transitions from config
+
+## Component Structure
+
+### Creating New Components
+
+Follow the established pattern for new components:
+
+```
+component-name/
+├── component-name.component.ts      # Component logic
+├── component-name.component.html    # Template
+└── component-name.component.scss    # Styles with Tailwind
+```
+
+### Component Template
+
+```typescript
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+/**
+ * Brief description of component
+ */
+@Component({
+  selector: 'app-component-name',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './component-name.component.html',
+  styleUrls: ['./component-name.component.scss']
+})
+export class ComponentNameComponent {
+  @Input() data!: any;
+  
+  // Component logic
+}
+```
+
+### Component HTML
+
+```html
+<div class="component-container">
+  <h2 class="component-title">{{ data.title }}</h2>
+  <p class="component-description">{{ data.description }}</p>
+</div>
+```
+
+### Component SCSS
+
+```scss
+.component-container {
+  @apply flex flex-col gap-4 p-6 rounded-lg;
+  @apply bg-surface border border-border;
+}
+
+.component-title {
+  @apply text-xl font-bold text-text;
+}
+
+.component-description {
+  @apply text-sm text-text-muted;
 }
 ```
 

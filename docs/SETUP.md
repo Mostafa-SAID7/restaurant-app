@@ -54,6 +54,26 @@ The application will be available at `http://localhost:4200`
 
 The development server will automatically reload when you make changes to the code.
 
+### Tailwind CSS Setup
+
+The project uses **Tailwind CSS v3** for styling. The configuration is already set up:
+
+- **Configuration file**: `tailwind.config.ts` - Contains custom theme colors, spacing, and utilities
+- **PostCSS config**: `postcss.config.js` - Processes Tailwind directives
+- **Global styles**: `src/styles.scss` - Imports Tailwind CSS directives
+
+**Key Tailwind Features:**
+- Custom color palette (dark theme with orange accents)
+- Custom spacing scale (0.25rem to 6rem)
+- Custom border radius and shadows
+- Smooth transitions and animations
+- Responsive breakpoints (sm, md, lg, xl)
+
+**Tailwind IntelliSense:**
+Install the VS Code extension for autocomplete:
+- Search for "Tailwind CSS IntelliSense" in VS Code extensions
+- Provides class name suggestions and documentation
+
 ### Configure IDE
 
 #### Visual Studio Code
