@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { MenuService } from '../../core/services/menu.service';
 import { ReviewService } from '../../core/services/review.service';
 import { CartService } from '../../core/services/cart.service';
+import { SeoService } from '../../core/services/seo.service';
+import { StructuredDataService } from '../../core/services/structured-data.service';
 import { MenuItem } from '../../core/models/menu-item.model';
 import { Review } from '../../core/models/review.model';
 import { IconComponent } from '../../shared/components/icon.component';
@@ -13,6 +15,7 @@ import { ReviewCardComponent } from '../../shared/components/review-card/review-
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 import { CategoryIconMapperService } from '../../shared/services/category-icon-mapper.service';
 import { fadeUp, staggerFadeUp, scaleIn } from '../../shared/animations/fade.animations';
+import { SEO_CONFIG } from '../../core/config/seo-config';
 
 @Component({
   selector: 'app-home',
@@ -250,6 +253,8 @@ export class HomeComponent implements OnInit {
   private menuService   = inject(MenuService);
   private reviewService = inject(ReviewService);
   private cartService   = inject(CartService);
+  private seoService    = inject(SeoService);
+  private structuredDataService = inject(StructuredDataService);
   categoryIconMapper    = inject(CategoryIconMapperService);
 
   featuredItems = signal<MenuItem[]>([]);
@@ -257,6 +262,15 @@ export class HomeComponent implements OnInit {
   loading       = signal(true);
 
   ngOnInit(): void {
+    // Set SEO metadata
+    this.seoService.setSeoMetadata(SEO_CONFIG.pages.home);
+
+    // Add structured data
+    this.structuredDataService.addRestaurantSchema(SEO_CONFIG.restaurant);
+    this.structuredDataService.addBreadcrumbSchema([
+      { name: 'Home', url: this.seoService.getBaseUrl() }
+    ]);
+
     this.menuService.getFeaturedItems().subscribe(items => {
       this.featuredItems.set(items.slice(0, 3));
       this.loading.set(false);

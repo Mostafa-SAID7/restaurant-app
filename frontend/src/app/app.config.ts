@@ -5,6 +5,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideServiceWorker } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
+import { SeoService } from './core/services/seo.service';
+import { StructuredDataService } from './core/services/structured-data.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +17,8 @@ export const appConfig: ApplicationConfig = {
     provideServiceWorker('ngsw-worker.js', {
       enabled: !environment.development,
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    SeoService,
+    StructuredDataService
   ]
 };

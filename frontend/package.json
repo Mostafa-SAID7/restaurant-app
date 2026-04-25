@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && npm run generate:sitemap",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:restaurant-app": "node dist/restaurant-app/server/server.mjs"
+    "serve:ssr:restaurant-app": "node dist/restaurant-app/server/server.mjs",
+    "generate:sitemap": "node scripts/generate-sitemap.js"
   },
   "private": true,
   "dependencies": {
