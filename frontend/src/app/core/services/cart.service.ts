@@ -1,4 +1,4 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, delay } from 'rxjs/operators';
@@ -8,6 +8,7 @@ import { MenuItem } from '../models/menu-item.model';
 @Injectable({ providedIn: 'root' })
 export class CartService {
   private apiUrl = 'https://fakerestaurantapi.runasp.net/orders';
+  private http = inject(HttpClient);
 
   // Signals-based cart state
   private _items = signal<CartItem[]>([]);
@@ -22,8 +23,6 @@ export class CartService {
   );
 
   readonly isEmpty = computed(() => this._items().length === 0);
-
-  constructor(private http: HttpClient) {}
 
   addItem(menuItem: MenuItem, quantity = 1): void {
     this._items.update(items => {
