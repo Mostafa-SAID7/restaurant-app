@@ -10,8 +10,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-loading-spinner',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './loading-spinner.component.html',
-  styleUrls: ['./loading-spinner.component.scss']
+  templateUrl: './loading-spinner.component.html'
 })
 export class LoadingSpinnerComponent {
   @Input() size: 'sm' | 'md' | 'lg' = 'md';

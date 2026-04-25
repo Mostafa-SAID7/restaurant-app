@@ -12,8 +12,7 @@ import { IconComponent } from '../icon.component';
   selector: 'app-menu-item-card',
   standalone: true,
   imports: [CommonModule, IconComponent],
-  templateUrl: './menu-item-card.component.html',
-  styleUrls: ['./menu-item-card.component.scss']
+  templateUrl: './menu-item-card.component.html'
 })
 export class MenuItemCardComponent {
   @Input() item!: MenuItem;

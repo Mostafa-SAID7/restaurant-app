@@ -11,8 +11,7 @@ import { IconComponent } from '../icon.component';
   selector: 'app-empty-state',
   standalone: true,
   imports: [CommonModule, IconComponent],
-  templateUrl: './empty-state.component.html',
-  styleUrls: ['./empty-state.component.scss']
+  templateUrl: './empty-state.component.html'
 })
 export class EmptyStateComponent {
   @Input() icon: string = 'inbox';

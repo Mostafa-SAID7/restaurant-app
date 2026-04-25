@@ -36,7 +36,7 @@ export const RESTAURANT_INFO = {
     chefs: 12,
     dishes: 48,
     wineLabels: 500,
-    yearsExperience: 20,
+    yearsExperience: 12,
     rating: 4.9
   },
   michelin: {

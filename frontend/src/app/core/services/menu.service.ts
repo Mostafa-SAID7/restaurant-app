@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MenuItem, MenuCategory } from '../models/menu-item.model';
-import { getImagePath } from '../../data/constants/images';
+import { getImagePath } from '../data/images';
 
 const MOCK_MENU: MenuItem[] = [
   { id: 1, name: 'Charred Octopus', description: 'Perfectly charred octopus with smoked paprika aioli, pickled peppers, and micro herbs', price: 22, category: 'Appetizers', image: getImagePath('Charred Octopus'), isAvailable: true, isFeatured: true, tags: ['chef-special'] },

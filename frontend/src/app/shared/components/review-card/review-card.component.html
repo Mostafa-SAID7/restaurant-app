@@ -1,25 +1,53 @@
-<div class="review-card">
-  <div class="review-header">
-    <div class="reviewer-avatar">{{ review.customerName[0] }}</div>
-    <div class="reviewer-info">
-      <strong class="reviewer-name">{{ review.customerName }}</strong>
-      <div class="stars">
-        @for (s of [1,2,3,4,5]; track s) {
-          @if (s <= review.rating) {
-            <app-icon name="starFill" class="star text-accent"></app-icon>
-          } @else {
-            <app-icon name="star" class="star text-muted"></app-icon>
+<div class="group relative flex flex-col gap-6 p-8 rounded-[2.5rem] bg-surface/40 backdrop-blur-xl border border-border/50 transition-all duration-500 hover:-translate-y-2 hover:bg-surface/60 hover:border-accent/30 hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)]">
+  <!-- Decorative Quote Mark -->
+  <div class="absolute -top-4 -left-2 text-8xl font-serif text-accent/5 select-none pointer-events-none group-hover:text-accent/10 transition-colors">"</div>
+  
+  <div class="flex items-center gap-5 relative z-10">
+    <div class="relative">
+      <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-accent-hover text-white flex items-center justify-center font-serif text-2xl shadow-lg shadow-accent/20 group-hover:scale-110 transition-transform duration-500">
+        {{ review.customerName[0] }}
+      </div>
+      @if (review.verified) {
+        <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-success text-white rounded-full flex items-center justify-center border-2 border-surface shadow-sm" title="Verified Guest">
+          <app-icon name="check" strokeWidth="3" class="w-3 h-3"></app-icon>
+        </div>
+      }
+    </div>
+    
+    <div class="flex-1 flex flex-col gap-1.5">
+      <h4 class="text-lg font-serif text-text tracking-tight">{{ review.customerName }}</h4>
+      <div class="flex items-center gap-1.5">
+        <div class="flex gap-0.5">
+          @for (s of [1,2,3,4,5]; track s) {
+            <app-icon [name]="s <= review.rating ? 'starFill' : 'star'" 
+                     class="w-4 h-4 transition-transform duration-300"
+                     [ngClass]="{
+                       'text-accent scale-110': s <= review.rating,
+                       'text-text-muted/30': s > review.rating
+                     }">
+            </app-icon>
           }
-        }
+        </div>
+        <span class="text-[10px] uppercase tracking-widest text-text-dim font-bold ml-2">Guest Rating</span>
       </div>
     </div>
-    @if (review.verified) {
-      <span class="verified-badge">
-        <app-icon name="check" strokeWidth="2.5" class="mr-1"></app-icon>
-        Verified
-      </span>
-    }
   </div>
-  <p class="review-text">"{{ review.comment }}"</p>
-  <span class="review-date">{{ review.date | date:'MMMM d, yyyy' }}</span>
+
+  <div class="relative z-10 flex-1">
+    <p class="text-base leading-relaxed text-text/80 italic font-medium">
+      "{{ review.comment }}"
+    </p>
+  </div>
+
+  <div class="flex items-center justify-between pt-4 border-t border-border/30 relative z-10">
+    <div class="flex items-center gap-2 text-text-dim">
+      <app-icon name="calendar" class="w-3.5 h-3.5"></app-icon>
+      <span class="text-xs font-medium">{{ review.date | date:'MMMM d, yyyy' }}</span>
+    </div>
+    <div class="flex gap-1">
+      <div class="w-1.5 h-1.5 rounded-full bg-accent/20"></div>
+      <div class="w-1.5 h-1.5 rounded-full bg-accent/40"></div>
+      <div class="w-1.5 h-1.5 rounded-full bg-accent/60"></div>
+    </div>
+  </div>
 </div>

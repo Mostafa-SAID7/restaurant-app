@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CATEGORY_ICONS } from '../../data/constants/categories';
+import { CATEGORY_ICONS } from '../../core/data/categories';
 
 /**
  * Category Icon Mapper Service

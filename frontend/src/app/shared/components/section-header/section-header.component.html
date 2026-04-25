@@ -1,13 +1,26 @@
-<div class="section-header" [class.text-left]="alignment === 'left'">
+<div class="mb-16" [ngClass]="{'text-left': alignment === 'left', 'text-center': alignment !== 'left'}">
   @if (label) {
-    <span class="section-label">{{ label }}</span>
+    <span class="inline-block px-4 py-1.5 bg-accent/10 text-accent rounded-full text-[10px] font-bold uppercase tracking-[0.2em] mb-6 shadow-sm border border-accent/10">{{ label }}</span>
   }
-  <h2 class="section-title">{{ title }}</h2>
+  
+  <h2 class="text-3xl md:text-5xl font-serif text-text mb-6 leading-tight max-w-3xl" 
+      [ngClass]="{'ml-0': alignment === 'left', 'mx-auto': alignment !== 'left'}">
+    {{ title }}
+  </h2>
+  
   @if (showDivider) {
-    <div class="divider" [class.divider-left]="alignment === 'left'"></div>
+    <div class="h-1 rounded-full bg-gradient-to-r from-accent to-accent-hover mb-8 opacity-80" 
+         [ngClass]="{'w-12 ml-0': alignment === 'left', 'w-24 mx-auto': alignment !== 'left'}"></div>
   }
+  
   @if (subtitle) {
-    <p class="section-subtitle">{{ subtitle }}</p>
+    <p class="text-lg text-text-muted/80 max-w-2xl leading-relaxed mt-4 font-light" 
+       [ngClass]="{'ml-0': alignment === 'left', 'mx-auto': alignment !== 'left'}">
+      {{ subtitle }}
+    </p>
   }
-  <ng-content></ng-content>
+  
+  <div class="mt-8">
+    <ng-content></ng-content>
+  </div>
 </div>

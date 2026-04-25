@@ -10,8 +10,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-page-header',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './page-header.component.html',
-  styleUrls: ['./page-header.component.scss']
+  templateUrl: './page-header.component.html'
 })
 export class PageHeaderComponent {
   @Input() label: string = '';

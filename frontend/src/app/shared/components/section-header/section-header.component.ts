@@ -10,8 +10,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-section-header',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './section-header.component.html',
-  styleUrls: ['./section-header.component.scss']
+  templateUrl: './section-header.component.html'
 })
 export class SectionHeaderComponent {
   @Input() label: string = '';

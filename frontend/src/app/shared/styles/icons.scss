@@ -361,18 +361,6 @@ app-icon.icon-warning:hover,
   transition: all var(--transition-base);
 }
 
-/* Story Icons */
-.story-icon {
-  font-size: 5rem;
-  color: var(--color-text-muted);
-  opacity: 0.5;
-  transition: all var(--transition-base);
-  
-  &:hover {
-    opacity: 0.7;
-    transform: scale(1.05);
-  }
-}
 
 /* Value Icons */
 .value-icon {
@@ -560,9 +548,6 @@ app-icon.icon-warning:hover,
     height: 28px;
   }
   
-  .story-icon {
-    font-size: 3rem;
-  }
   
   .feature-icon {
     font-size: 2rem;
@@ -580,9 +565,6 @@ app-icon.icon-warning:hover,
     height: 24px;
   }
   
-  .story-icon {
-    font-size: 2rem;
-  }
   
   .feature-icon {
     font-size: 1.5rem;

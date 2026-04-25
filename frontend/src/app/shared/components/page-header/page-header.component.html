@@ -1,16 +1,36 @@
-<div class="page-header">
-  <div class="page-header-bg"></div>
-  <div class="container p-header-section text-center">
-    @if (label) {
-      <span class="section-label">{{ label }}</span>
-    }
-    <h1 class="section-title title-lg">{{ title }}</h1>
-    @if (showDivider) {
-      <div class="divider"></div>
-    }
-    @if (subtitle) {
-      <p class="section-subtitle mt-4 mx-auto mb-0">{{ subtitle }}</p>
-    }
-    <ng-content></ng-content>
+<div class="relative py-24 overflow-hidden md:py-32">
+  <!-- Dynamic Background with Overlay -->
+  <div class="absolute inset-0 bg-bg-surface-2 z-0">
+    <div class="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent opacity-50"></div>
+    <!-- Subtle pattern or grain could go here -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(191,155,48,0.08),transparent_50%)]"></div>
+  </div>
+
+  <div class="container relative z-10 text-center px-6">
+    <div class="max-w-3xl mx-auto">
+      @if (label) {
+        <span class="inline-block px-5 py-1.5 bg-accent/10 text-accent rounded-full text-[10px] font-bold uppercase tracking-[0.3em] mb-8 border border-accent/20 animate-fade-in">
+          {{ label }}
+        </span>
+      }
+      
+      <h1 class="text-5xl md:text-7xl font-serif font-bold m-0 text-white tracking-tight leading-tight animate-slide-up">
+        {{ title }}
+      </h1>
+
+      @if (showDivider) {
+        <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-accent/50 to-transparent mx-auto my-10 animate-scale-x"></div>
+      }
+
+      @if (subtitle) {
+        <p class="text-lg md:text-xl text-text-dim max-w-2xl leading-relaxed mx-auto mb-0 font-light animate-fade-in-up">
+          {{ subtitle }}
+        </p>
+      }
+
+      <div class="mt-12">
+        <ng-content></ng-content>
+      </div>
+    </div>
   </div>
 </div>

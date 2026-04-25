@@ -12,8 +12,7 @@ import { IconComponent } from '../icon.component';
   selector: 'app-review-card',
   standalone: true,
   imports: [CommonModule, IconComponent],
-  templateUrl: './review-card.component.html',
-  styleUrls: ['./review-card.component.scss']
+  templateUrl: './review-card.component.html'
 })
 export class ReviewCardComponent {
   @Input() review!: Review;

@@ -12,6 +12,7 @@ import { MenuItemCardComponent } from '../../shared/components/menu-item-card/me
 import { ReviewCardComponent } from '../../shared/components/review-card/review-card.component';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 import { CategoryIconMapperService } from '../../shared/services/category-icon-mapper.service';
+import { fadeUp, staggerFadeUp, scaleIn } from '../../shared/animations/fade.animations';
 
 @Component({
   selector: 'app-home',
@@ -25,53 +26,92 @@ import { CategoryIconMapperService } from '../../shared/services/category-icon-m
     ReviewCardComponent,
     LoadingSpinnerComponent
   ],
+  animations: [fadeUp, staggerFadeUp, scaleIn],
   template: `
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-overlay"></div>
-      <div class="container hero-content">
-        <div class="hero-text animate-fade-up">
-          <span class="badge badge-accent">Est. 2019 · New York City</span>
-          <h1 class="hero-title">
+    <section class="relative h-screen flex flex-col justify-center overflow-hidden">
+      <!-- Background Image with Overlay -->
+      <div class="absolute inset-0 bg-[url('/hero-premium.png')] bg-cover bg-center bg-no-repeat bg-bg transition-all duration-1000"></div>
+      <div class="absolute inset-0 bg-radial-gradient(circle_at_50%_50%,rgba(18,18,18,0.2)_0%,rgba(18,18,18,0.7)_100%)"></div>
+      <div class="absolute inset-0 bg-black/30"></div>
+      
+      <div class="container relative z-20 grid lg:grid-cols-5 gap-12 items-center pt-24 lg:pt-32 pb-20">
+        <!-- Hero Content -->
+        <div class="lg:col-span-3 max-w-2xl lg:text-left text-center" @fadeUp>
+          <span class="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold tracking-widest uppercase mb-6">
+            Est. 2019 · New York City
+          </span>
+          <h1 class="text-6xl lg:text-8xl font-serif leading-[1.05] mb-8 text-white">
             A Symphony of<br>
-            <span class="text-accent">NooR</span>
+            <span class="text-accent italic font-light">NooR</span>
           </h1>
-          <p class="hero-subtitle">
+          <p class="text-xl text-text-muted leading-relaxed mb-12 max-w-xl mx-auto lg:mx-0 font-light">
             Where culinary artistry meets obsidian elegance. Every dish is a narrative,
             every evening an unforgettable experience.
           </p>
-          <div class="hero-actions">
-            <a routerLink="/reservations" class="btn btn-primary btn-lg">
+          <div class="flex flex-wrap gap-5 lg:justify-start justify-center">
+            <a routerLink="/reservations" class="btn btn-primary btn-lg px-10 group shadow-xl shadow-accent/20">
               Reserve Your Table
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <app-icon name="arrow_right" class="transition-transform group-hover:translate-x-2"></app-icon>
             </a>
-            <a routerLink="/menu" class="btn btn-ghost btn-lg">Explore Menu</a>
+            <a routerLink="/menu" class="btn btn-outline btn-lg px-10 border-white/20 hover:bg-white/5">Explore Menu</a>
           </div>
         </div>
-        <div class="hero-stats">
-          <div class="stat-card">
-            <span class="stat-number">12+</span>
-            <span class="stat-label">Years of Excellence</span>
+
+        <!-- Hero Stats -->
+        <div class="lg:col-span-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-5 lg:gap-8 lg:justify-items-end mt-16 lg:mt-0" @staggerFadeUp>
+          <!-- Stat 1 -->
+          <div class="flex items-center gap-6 bg-surface/40 backdrop-blur-3xl border border-white/10 p-7 rounded-[2.5rem] w-full lg:max-w-[320px] transition-all hover:border-accent/40 hover:bg-white/10 group shadow-2xl">
+            <div class="w-16 h-16 rounded-3xl bg-accent/15 flex items-center justify-center text-accent group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-inner">
+              <app-icon name="award" strokeWidth="2" class="text-3xl"></app-icon>
+            </div>
+            <div>
+              <span class="block text-4xl font-serif font-bold text-white leading-none mb-1">12+</span>
+              <span class="text-[10px] text-text-dim uppercase tracking-[0.25em] font-bold">Years of Excellence</span>
+            </div>
           </div>
-          <div class="stat-card">
-            <span class="stat-number">48</span>
-            <span class="stat-label">Curated Dishes</span>
+
+          <!-- Stat 2 -->
+          <div class="flex items-center gap-6 bg-surface/40 backdrop-blur-3xl border border-white/10 p-7 rounded-[2.5rem] w-full lg:max-w-[320px] transition-all hover:border-accent/40 hover:bg-white/10 group shadow-2xl">
+            <div class="w-16 h-16 rounded-3xl bg-accent/15 flex items-center justify-center text-accent group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 shadow-inner">
+              <app-icon name="sparkles" strokeWidth="2" class="text-3xl"></app-icon>
+            </div>
+            <div>
+              <span class="block text-4xl font-serif font-bold text-white leading-none mb-1">48</span>
+              <span class="text-[10px] text-text-dim uppercase tracking-[0.25em] font-bold">Curated Dishes</span>
+            </div>
           </div>
-          <div class="stat-card">
-            <span class="stat-number flex items-center justify-center gap-1"><app-icon name="star" fill="currentColor" strokeWidth="0"></app-icon> 4.9</span>
-            <span class="stat-label">Guest Rating</span>
+
+          <!-- Stat 3 -->
+          <div class="flex items-center gap-6 bg-surface/40 backdrop-blur-3xl border border-white/10 p-7 rounded-[2.5rem] w-full lg:max-w-[320px] transition-all hover:border-accent/40 hover:bg-white/10 group shadow-2xl md:col-span-1 col-span-2 mx-auto md:mx-0">
+            <div class="w-16 h-16 rounded-3xl bg-accent/15 flex items-center justify-center text-accent group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-inner">
+              <app-icon name="starFill" strokeWidth="0" class="text-3xl"></app-icon>
+            </div>
+            <div>
+              <span class="block text-4xl font-serif font-bold text-white leading-none mb-1">4.9</span>
+              <span class="text-[10px] text-text-dim uppercase tracking-[0.25em] font-bold">Guest Rating</span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="hero-scroll-indicator">
-        <div class="scroll-line"></div>
-        <span>Scroll to explore</span>
+
+      <!-- Hero Scroll Indicator -->
+      <div class="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-[10px] text-text-dim uppercase tracking-[0.3em] z-20">
+        <div class="w-[1px] h-16 bg-gradient-to-b from-accent to-transparent animate-pulse"></div>
+        <span class="opacity-50">Scroll to explore</span>
+      </div>
+      
+      <!-- Premium Transition Fade-out with Deeper Blur -->
+      <div class="absolute bottom-0 left-0 right-0 h-64 pointer-events-none z-10 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/95 to-transparent"></div>
+        <div class="absolute inset-0 backdrop-blur-2xl [mask-image:linear-gradient(to_top,black_10%,transparent)] opacity-40"></div>
+        <div class="absolute inset-0 backdrop-blur-md [mask-image:linear-gradient(to_top,black_30%,transparent)] opacity-60"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-px bg-white/5"></div>
       </div>
     </section>
 
     <!-- Featured Items Section -->
-    <section class="section">
+    <section class="py-24">
       <div class="container">
         <app-section-header
           label="Hand-picked by our Chef"
@@ -83,7 +123,7 @@ import { CategoryIconMapperService } from '../../shared/services/category-icon-m
         @if (loading()) {
           <app-loading-spinner></app-loading-spinner>
         } @else {
-          <div class="featured-grid">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" @staggerFadeUp>
             @for (item of featuredItems(); track item.id) {
               <app-menu-item-card
                 [item]="item"
@@ -93,63 +133,75 @@ import { CategoryIconMapperService } from '../../shared/services/category-icon-m
             }
           </div>
 
-          <div class="text-center mt-10">
-            <a routerLink="/menu" class="btn btn-outline btn-lg">View Full Menu</a>
+          <div class="text-center mt-16">
+            <a routerLink="/menu" class="btn btn-outline btn-lg min-w-[200px]">View Full Menu</a>
           </div>
         }
       </div>
     </section>
 
     <!-- Experience Section -->
-    <section class="experience-section section">
+    <section class="py-24 bg-surface/30">
       <div class="container">
-        <div class="experience-grid">
-          <div class="experience-text">
-            <span class="section-label">Our Philosophy</span>
-            <h2 class="section-title text-left">The Art of<br><span class="text-accent">Fine Dining</span></h2>
-            <div class="divider my-4 ml-0"></div>
-            <p class="text-muted mb-4 leading-relaxed">
-              At NooR, we believe that dining is more than sustenance — it's a complete sensory journey. Our kitchen brigade, led by Chef Marcus Voss, sources only the finest seasonal ingredients from trusted local farms and international purveyors.
-            </p>
-            <p class="text-muted mb-8 leading-relaxed">
-              Every dish is composed with the care of a painter, the precision of a sculptor, and the heart of a storyteller.
-            </p>
-            <div class="experience-features">
-              <div class="experience-feature">
-                <app-icon name="leaf" class="feature-icon"></app-icon>
+        <div class="grid lg:grid-cols-2 gap-16 items-center" @fadeUp>
+          <div class="flex flex-col">
+            <span class="text-xs font-bold tracking-widest uppercase text-accent mb-3 block">Our Philosophy</span>
+            <h2 class="text-4xl lg:text-5xl font-serif mb-6 leading-tight">The Art of<br><span class="text-accent">Fine Dining</span></h2>
+            <div class="w-16 h-1 bg-accent rounded-full mb-8"></div>
+            
+            <div class="space-y-8">
+              <div class="flex gap-5 group">
+                <div class="w-12 h-12 rounded-full bg-accent/5 flex items-center justify-center text-accent shrink-0 group-hover:bg-accent/10 transition-colors">
+                  <app-icon name="leaf" strokeWidth="2"></app-icon>
+                </div>
                 <div>
-                  <strong>Farm to Table</strong>
-                  <p>Locally sourced, seasonal ingredients</p>
+                  <h4 class="text-lg font-bold mb-1">Farm to Table</h4>
+                  <p class="text-text-muted leading-relaxed">Locally sourced, seasonal ingredients from trusted purveyors.</p>
                 </div>
               </div>
-              <div class="experience-feature">
-                <app-icon name="wine" class="feature-icon"></app-icon>
+
+              <div class="flex gap-5 group">
+                <div class="w-12 h-12 rounded-full bg-accent/5 flex items-center justify-center text-accent shrink-0 group-hover:bg-accent/10 transition-colors">
+                  <app-icon name="wine" strokeWidth="2"></app-icon>
+                </div>
                 <div>
-                  <strong>Curated Wine Cellar</strong>
-                  <p>500+ labels from 30+ countries</p>
+                  <h4 class="text-lg font-bold mb-1">Curated Wine Cellar</h4>
+                  <p class="text-text-muted leading-relaxed">500+ premium labels from the world's finest vineyards.</p>
                 </div>
               </div>
-              <div class="experience-feature">
-                <app-icon name="award" class="feature-icon"></app-icon>
+
+              <div class="flex gap-5 group">
+                <div class="w-12 h-12 rounded-full bg-accent/5 flex items-center justify-center text-accent shrink-0 group-hover:bg-accent/10 transition-colors">
+                  <app-icon name="trophy" strokeWidth="2"></app-icon>
+                </div>
                 <div>
-                  <strong>Award-Winning</strong>
-                  <p>Michelin recommended since 2022</p>
+                  <h4 class="text-lg font-bold mb-1">Award-Winning</h4>
+                  <p class="text-text-muted leading-relaxed">Michelin recommended for exceptional quality and service.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="experience-visual">
-            <div class="visual-card">
-              <div class="visual-inner">
-                <app-icon name="diamondFill" class="visual-text"></app-icon>
-                <h3>Tasting Menu</h3>
-                <p>7-Course Experience</p>
-                <p class="price text-xl mt-3">$185 pp</p>
-              </div>
+
+          <div class="relative lg:mt-0 mt-12 group">
+            <!-- Experience Image -->
+            <div class="aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl relative border border-white/5">
+              <img src="/philosophy-premium.png" alt="The Art of Fine Dining" 
+                   class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-bg/90 via-transparent to-transparent"></div>
+              <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[4rem]"></div>
             </div>
-            <div class="visual-tag">
-              <span>Chef's Table Available</span>
-              <a routerLink="/reservations" class="btn btn-primary btn-sm">Book Now</a>
+            
+            <!-- Tasting Menu Overlay Card -->
+            <div class="absolute -bottom-10 -left-10 md:-left-20 p-10 rounded-[2.5rem] bg-surface/90 backdrop-blur-2xl border border-white/10 shadow-3xl max-w-[320px] transition-all duration-500 group-hover:-translate-y-2" @scaleIn>
+              <div class="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center text-accent mb-6">
+                <app-icon name="sparkles" class="text-3xl"></app-icon>
+              </div>
+              <h3 class="text-2xl font-serif mb-3">Tasting Menu</h3>
+              <p class="text-text-muted mb-6 text-sm leading-relaxed">A 7-course curated journey through<br>our signature flavors.</p>
+              <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-accent">$185 <span class="text-xs text-text-dim font-normal uppercase tracking-widest">pp</span></div>
+                <a routerLink="/reservations" class="btn btn-primary btn-sm rounded-full">Book Now</a>
+              </div>
             </div>
           </div>
         </div>
@@ -157,7 +209,7 @@ import { CategoryIconMapperService } from '../../shared/services/category-icon-m
     </section>
 
     <!-- Reviews Section -->
-    <section class="section bg-surface">
+    <section class="py-24">
       <div class="container">
         <app-section-header
           label="What Our Guests Say"
@@ -166,9 +218,9 @@ import { CategoryIconMapperService } from '../../shared/services/category-icon-m
         </app-section-header>
 
         @if (reviews().length > 0) {
-          <div class="reviews-grid">
+          <div class="grid md:grid-cols-2 gap-8" @staggerFadeUp>
             @for (review of reviews(); track review.id) {
-              <app-review-card [review]="review"></app-review-card>
+              <app-review-card [review]="review" class="h-full"></app-review-card>
             }
           </div>
         }
@@ -176,16 +228,24 @@ import { CategoryIconMapperService } from '../../shared/services/category-icon-m
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
-      <div class="container cta-content">
-        <h2 class="section-title">Ready for an Unforgettable Evening?</h2>
-        <p class="section-subtitle">Reserve your table now and let us craft an experience tailored to you.</p>
-        <div class="flex gap-4 justify-center flex-wrap mt-8">
-          <a routerLink="/reservations" class="btn btn-primary btn-lg">Make a Reservation</a>
-          <a routerLink="/menu" class="btn btn-outline btn-lg">Browse Our Menu</a>
+    <section class="py-32 relative overflow-hidden">
+      <!-- Smoke Transition -->
+      <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-bg to-transparent z-10"></div>
+      
+      <div class="absolute inset-0 bg-gradient-to-br from-surface to-accent/5"></div>
+      <div class="container relative z-20 text-center" @fadeUp>
+        <h2 class="text-4xl lg:text-5xl font-serif mb-6">Ready for an Unforgettable Evening?</h2>
+        <p class="text-xl text-text-muted mb-12 max-w-2xl mx-auto leading-relaxed">Reserve your table now and let us craft an experience tailored to you.</p>
+        <div class="flex gap-6 justify-center flex-wrap">
+          <a routerLink="/reservations" class="btn btn-primary btn-lg px-12 group">
+            Make a Reservation
+            <app-icon name="calendar" class="ml-2 transition-transform group-hover:scale-110"></app-icon>
+          </a>
+          <a routerLink="/menu" class="btn btn-outline btn-lg px-12">Browse Our Menu</a>
         </div>
       </div>
     </section>
+
   `
 })
 export class HomeComponent implements OnInit {

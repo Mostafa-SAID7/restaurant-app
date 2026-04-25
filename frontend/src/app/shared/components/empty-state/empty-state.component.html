@@ -1,13 +1,13 @@
-<div class="empty-state">
-  <div class="empty-state-icon">
-    <app-icon [name]="icon" class="icon-lg"></app-icon>
+<div class="flex flex-col items-center justify-center gap-4 p-6 text-center min-h-80">
+  <div class="flex items-center justify-center w-16 h-16 rounded-full bg-bg-surface-2 text-text-muted">
+    <app-icon [name]="icon" class="w-8 h-8 flex items-center justify-center"></app-icon>
   </div>
-  <h3 class="empty-state-title">{{ title }}</h3>
+  <h3 class="text-xl font-semibold text-text m-0">{{ title }}</h3>
   @if (message) {
-    <p class="empty-state-message">{{ message }}</p>
+    <p class="text-sm text-text-muted m-0 max-w-sm">{{ message }}</p>
   }
   @if (showAction) {
-    <button class="btn btn-ghost" (click)="onActionClick()">
+    <button class="btn btn-ghost mt-2" (click)="onActionClick()">
       {{ actionLabel }}
     </button>
   }

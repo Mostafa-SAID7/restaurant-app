@@ -1,6 +1,14 @@
-<div class="loading-state" [class]="'loading-' + size">
-  <div class="spinner"></div>
+<div class="flex flex-col items-center justify-center gap-4 p-8" [ngClass]="{
+  'min-h-32': size === 'sm',
+  'min-h-52': size === 'md',
+  'min-h-screen': size === 'lg'
+}">
+  <div class="border-border border-t-accent rounded-full animate-spin" [ngClass]="{
+    'w-6 h-6 border-2': size === 'sm',
+    'w-10 h-10 border-4': size === 'md',
+    'w-14 h-14 border-4': size === 'lg'
+  }"></div>
   @if (message) {
-    <p class="loading-message">{{ message }}</p>
+    <p class="text-sm text-text-muted m-0">{{ message }}</p>
   }
 </div>
