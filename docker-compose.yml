@@ -26,22 +26,6 @@ services:
       retries: 3
       start_period: 5s
 
-  # Nginx Reverse Proxy (Optional)
-  nginx:
-    image: nginx:alpine
-    container_name: restaurant-nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./ssl:/etc/nginx/ssl:ro
-    depends_on:
-      - restaurant-app
-    networks:
-      - restaurant-network
-    restart: unless-stopped
-
   # PostgreSQL Database (Optional)
   postgres:
     image: postgres:15-alpine
