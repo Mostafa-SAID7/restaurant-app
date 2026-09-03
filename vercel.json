@@ -1,6 +1,10 @@
 {
-  "version": 2,
-  "buildCommand": "cd frontend && npm install --no-save && npm run build",
+  "buildCommand": "cd frontend && npm ci && npm run build",
   "outputDirectory": "frontend/dist/restaurant-app/browser",
-  "public": "frontend/dist/restaurant-app/browser"
+  "rewrites": [
+    {
+      "source": "/(?!.*\\.)",
+      "destination": "/index.html"
+    }
+  ]
 }
