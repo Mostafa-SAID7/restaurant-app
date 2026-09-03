@@ -35,9 +35,6 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
-      - name: Pull Vercel project info
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-
       - name: Create Vercel Build Output structure
         run: |
           mkdir -p .vercel/output/static
@@ -46,11 +43,8 @@ jobs:
           {
             "version": 3,
             "routes": [
-              {
-                "src": "/[^.]+",
-                "dest": "/index.html",
-                "status": 200
-              }
+              { "handle": "filesystem" },
+              { "src": "/.*", "dest": "/index.html", "status": 200 }
             ]
           }
           EOF
