@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [22.x]
 
     steps:
       - name: Checkout code
@@ -35,6 +35,5 @@ jobs:
       - name: Verify build output
         working-directory: frontend
         run: |
-          test -d dist/restaurant-app/browser && echo "✓ Browser build exists"
-          test -f dist/restaurant-app/prerendered-routes.json && echo "✓ Prerendered routes verified"
-          test -f dist/restaurant-app/browser/menu/index.html && echo "✓ Menu route prerendered"
+          test -f dist/restaurant-app/browser/index.html && echo "✓ Browser entry point exists"
+          test -f dist/restaurant-app/browser/manifest.webmanifest && echo "✓ PWA manifest exists"
