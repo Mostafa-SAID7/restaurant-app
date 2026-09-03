@@ -1,0 +1,56 @@
+# Ignore files during Vercel build
+
+# Git
+.git
+.gitignore
+.github
+CODEOWNERS
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Dependencies (use npm ci instead)
+node_modules/
+frontend/node_modules/
+.pnp
+
+# Build outputs (will be rebuilt)
+frontend/dist/
+.next
+out/
+build/
+
+# Tests
+coverage/
+*.spec.ts
+*.test.ts
+cypress/
+
+# Environment (use Vercel dashboard)
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Misc
+*.log
+.cache
+temp/
+tmp/
