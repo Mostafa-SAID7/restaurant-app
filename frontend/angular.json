@@ -52,14 +52,35 @@
                 }
               ],
               "outputHashing": "all",
-              "serviceWorker": "ngsw-config.json",
               "optimization": true,
               "extractLicenses": true,
-              "sourceMap": false
+              "sourceMap": false,
+              "server": "src/main.server.ts",
+              "prerender": true
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/restaurant-app/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
+            },
+            "development": {
+              "optimization": false,
               "sourceMap": true
             }
           },

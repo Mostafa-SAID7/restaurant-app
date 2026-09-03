@@ -1,18 +1,26 @@
 {
   "version": 2,
-  "buildCommand": "cd frontend && npm run build",
+  "buildCommand": "cd frontend && npm ci && npm run build",
   "outputDirectory": "frontend/dist/restaurant-app/browser",
   "framework": "angular",
   "nodeVersion": "18.x",
   "functions": {
-    "api/**.ts": {
+    "api/[...].ts": {
       "runtime": "nodejs18.x"
     }
   },
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
+      "source": "/assets/:path*",
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/index.html"
     }
   ],
   "headers": [
@@ -42,13 +50,15 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
-    }
-  ],
-  "redirects": [
+    },
     {
       "source": "/",
-      "destination": "/",
-      "permanent": false
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
     }
   ]
 }
